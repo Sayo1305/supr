@@ -1,9 +1,20 @@
 import React from 'react'
+import projectPic from '../assets/images/projectHelpPic.jpg'
 const ProjectSection = () =>{
     return(
         <div className='ProjectSectionContainer'>
             <h1>Get Project Assistance</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt magni officiis repellendus sunt necessitatibus, repellat aliquam aspernatur, maiores debitis obcaecati voluptate culpa! Repellat similique incidunt, pariatur aperiam, quidem eveniet itaque consequuntur vitae, sint ratione molestias fugit dolorum eius non? Nemo culpa consequatur quod voluptates facilis ut temporibus quis voluptatum pariatur!</p>
+            <div className="projectContainer">
+                <img src={projectPic} alt="" />
+                <div className="textandhead2">
+                    <h2>Are you struggling with your projects?</h2>
+                    <div className="text">
+                        <p> Our experienced team is here to assist you every step of the way. We provide comprehensive resources and personalized support to help you excel in your projects. Whether you need guidance with project planning, implementation, or troubleshooting, we've got you covered. Our experts are available to answer your questions, provide valuable insights, and help you overcome challenges. Don't let your projects become overwhelming. Let us empower you to achieve success.</p>
+                        <button className='projectHelpButton'> Get help Now</button>
+                    </div>
+                </div>
+                
+            </div>
         </div>
     )
 }

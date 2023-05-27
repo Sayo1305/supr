@@ -20,6 +20,11 @@
 
 /* instructor */
 
+.instructors h1{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
 .instructors img{
     width: 200px;
     height:200px;
@@ -40,20 +45,15 @@
     justify-content: space-around;
 }
 
-.skillContainer p{
-    display: flex;
-    width: 50%;
-}
 
+.skillLearning h1{
+    margin: 50px;
+    text-align: center;
+}
 
 
 .skillContainer img{
-    text-align: right;
-    width: 30%;
-    padding: 50px ;
-}
-
-.skillLearning h1{
-    margin: 20px;
-    text-align: center;
+    width: 25%;
+    border: 2px solid rgb(54, 71, 54);
+    border-radius: 30px;
 }

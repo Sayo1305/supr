@@ -16,14 +16,16 @@ const Contributions = () => {
                 <div className="skillLearning">
                     <h1>Skills to learn</h1>
                     <div className="skillContainer">
-                        <p>"Unlock Your Potential with Skill Videos: Master [Specific Skills] at Your Own Pace"
-                            In this section, you'll find an extensive collection of skill videos designed to help you acquire and refine [specific skills]. Whether you're a beginner looking to build a strong foundation or an experienced practitioner aiming to enhance your expertise, our skill videos provide a flexible and comprehensive learning experience.
-                        </p>
+                        <div className="textandhead2">
+                            <h2>"Unlock Your Potential with Skill Videos: Master Specific Skills at Your Own Pace"</h2>
+                            <div className="text">
+                                <p>In this section, you'll find an extensive collection of skill videos designed to help you acquire and refine specific skills]. Whether you're a beginner looking to build a strong foundation or an experienced practitioner aiming to enhance your expertise, our skill videos provide a flexible and comprehensive learning experience.
+                                </p>
+                                <button className='skillButton'> Explore more!</button>
+                            </div>
+                        </div>
                         <img className='skill_1' src={skill1} alt="" />
                     </div>
-                </div>
-                <div className="projectHelp">
-                    <h1>Project help available</h1>
                 </div>
             </div>
         </div>
