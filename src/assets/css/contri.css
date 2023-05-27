@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+/* title */
+
+.title h1{
+    background-image: linear-gradient(to top , #22E59F , #A56CFB);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.title{
+    padding: 20px;
+}
+
+.title p{
+    color: aqua;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* instructor */
+
+.instructors img{
+    width: 200px;
+    height:200px;
+    border-radius: 50%;
+}
+
+
+.instructor-images{
+    text-align: center;
+}
+
+/* skills */
+
+
+.skillContainer{
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+.skillContainer p{
+    display: flex;
+    width: 50%;
+}
+
+
+
+.skillContainer img{
+    text-align: right;
+    width: 30%;
+    padding: 50px ;
+}
+
+.skillLearning h1{
+    margin: 20px;
+    text-align: center;
+}

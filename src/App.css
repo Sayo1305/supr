@@ -7,6 +7,10 @@
       
       
 }
+.App{
+      background: linear-gradient(to top , #151934 , #071226);
+}
+
 p{
       color:red;
 }
@@ -61,3 +65,11 @@ p{
       background: rgb(12, 248, 12);
       font-weight: 600;
 }
+
+.ProjectSectionContainer h1{
+      background-image: linear-gradient(to top , #22E59F , #A56CFB);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+}
+
