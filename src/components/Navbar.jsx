@@ -31,7 +31,11 @@ const Navbar = () => {
           >
             Login
           </li>
-          <li id="signup">Sign up</li>
+          <li id="signup"
+          onClick={() => {
+            navigate('/Signup')
+          }}
+          >Sign up</li>
         </div>
       </ul>
     </div>
