@@ -10,7 +10,7 @@
       background: linear-gradient(to top , #151934 , #071226);
 }
 
-h1, p, span, ul, li{
+h1, p, span, ul, li, button{
       font-family: 'Poppins', sans-serif;
 }
 
@@ -590,8 +590,8 @@ ul{
   }
   
   .card{
-      height:400px;
-      width: 350px;
+      height:60%;
+      width: 300px;
       margin:20px;
       box-shadow: 5px 5px 20px black;
       overflow: hidden;
@@ -604,8 +604,8 @@ ul{
   }
   
   .intro{
-      height: 90px;
-      width: 264px;
+      height: 10%;
+      width: 300px;
       padding:6px;
       box-sizing: border-box;
       position: absolute;
@@ -616,7 +616,7 @@ ul{
   }
   
   .intro h2{
-      margin: 10px;
+      //margin: 10px;
       font-size: 1.5rem;
       text-align: center;
       background: linear-gradient(
