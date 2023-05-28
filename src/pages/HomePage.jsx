@@ -13,11 +13,11 @@ const HomePage = () => {
     <div className="App">
       <Navbar />
       <HeroSection />
-      <Contributions />
-      <ProjectHelpSection/>
       <CardSection />
       <MentorSection />
       <ResourcesSection />
+      <ProjectHelpSection/>
+      <Contributions />
       <Footer />
     </div>
   );
