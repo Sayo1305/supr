@@ -1,7 +1,9 @@
 import React from 'react'
 import resources from '../assets/images/resources.jpg'
+import { Navigate, useNavigate } from 'react-router'
 
 const ResourcesSection = () => {
+  const navigate =useNavigate();
   return (
     <div>
         <div className='ResourcesContainer'>
@@ -14,7 +16,7 @@ const ResourcesSection = () => {
                 <div className='resourcestext'>
                     <span>Empowering Minds, Igniting Potential: Discover a World of Free Resources at Your Fingertips!</span>
                     <p>Free video lectures, roadmaps, notes and much more to empower your learning and enhance your projects.</p>
-                    <button className='HeroSectionLeftButton'>find more!</button>
+                    <button onClick={()=>{navigate('/Resources')}}>find more!</button>
                 </div>
                 <img src={resources} className='resourceimg'/>
                 

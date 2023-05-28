@@ -7,21 +7,27 @@ const Footer = () => {
           <div>Unknown</div>
           <div>© 2023 Unknown Foundation. All rights reserved.</div>
         </div>
-        <div className="footerRight">
+        <div className="footerRightb">
+          <div className="footerRightInputDiv">
+            <input className="footerRightInput" type="email" name="" id="" />
+            <div className="footerRightButton">Email Us</div>
+          </div>
+          <div className="footerRight">
             <div className="footerRightDiv">
-                  <div className="footerRightDivHead">Unknown</div>
-                  <div>Resouces</div>
-                  <div>Contributors</div>
-                  <div>Project</div>
-                  <div>mentors</div>
+              <div className="footerRightDivHead">Unknown</div>
+              <div>Resouces</div>
+              <div>Contributors</div>
+              <div>Project</div>
+              <div>mentors</div>
             </div>
             <div className="footerRightDiv">
-                  <div className="footerRightDivHead">Unknown</div>
-                  <div>Resouces</div>
-                  <div>Contributors</div>
-                  <div>Project</div>
-                  <div>mentors</div>
+              <div className="footerRightDivHead">Unknown</div>
+              <div>Resouces</div>
+              <div>Contributors</div>
+              <div>Project</div>
+              <div>mentors</div>
             </div>
+          </div>
         </div>
       </div>
     </div>

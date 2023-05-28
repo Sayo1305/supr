@@ -47,25 +47,28 @@ ul{
       width: 100%;
       position: fixed;
       top: 0;
+      z-index: 40;
       background-color: #071226;
       display: flex;
       justify-content: space-between;
+      align-items: center;
   }
   
   .navleft{
       width: 50%;
       display: flex;
+      gap: 20px;
   }
 
   .navbar img{
-      margin: 0 20px 0 20px;
-      width: 9%;
+      width: 60px;
   }
 
   .navbar ul{
+      font-weight: 700;
       display: flex;
-      justify-content: space-between;
-      padding: 2px 10px 2px;
+      align-items: center;
+      gap: 20px;
   }
   
   .navbar li{
@@ -90,15 +93,16 @@ ul{
   }
 
   .navright{
-      width: 17%;
       display: flex;
-      justify-content: space-around;
+      align-items: center;
+      gap: 20px;
   }
   
   .btn{
       font-size: 1rem;
-      //padding: 0.1em 1.5em;
-      width: 45%;
+      /* padding: 0.1em 1.5em; */
+      padding: 10px 30px;
+      text-align: center;
       background: transparent;
       border: 1px solid #75fd92;
       border-radius: 0.5em;
@@ -107,7 +111,7 @@ ul{
   }
   
   .btn:hover{
-      //background-color: #75fd92;
+      /* background-color: #75fd92; */
       background: linear-gradient(to right, #75fd92, #1acbe9);
       color:#000000;
       cursor: pointer;
@@ -133,7 +137,7 @@ ul{
   text-shadow: #000000 3px 4px 1px;
   color: #fff;
   font-family: 'Titillium Web', sans-serif;
-  //font-family: "Lilita One", cursive;
+  /* font-family: "Lilita One", cursive; */
 }
 
 .heroTextSpan1, .heroTextSpan2{
@@ -292,14 +296,45 @@ ul{
       gap: 30px;
       width: 50%;
 }
+.footerRightInputDiv{
+      width: 100%;
+      gap: 20px;
+      display: flex;
+      align-items: center;
+}
+.footerRightInput{
+      border-radius: 10px;
+      padding: 10px;
+      width: 65%;
+      outline: none;
+      font-weight: 300;
+      font-size: 1.3rem;
+}
+.footerRightButton{
+      padding: 12px 27px;
+      color: #000;
+      cursor: pointer;
+      font-weight: 600;
+      background:  #05f571;
+      border-radius: 10px;
+}
 
-.footerRight{
+.footerRightb{
+      display: flex;
+      flex-direction: column;
       width: 50%;
-      display: grid;
-      grid-template-columns: auto auto;
       justify-items: center;
       align-items: center;
       justify-content: space-evenly;
+}
+
+.footerRight{
+      width: 100%;
+      display: grid;
+      grid-template-columns: auto auto auto;
+      justify-items: center;
+      align-items: center;
+      justify-content: space-between;
 }
 .footerRightDiv{
       display: flex;
@@ -493,11 +528,11 @@ ul{
 .resourcesbox{
       /* border: 2px solid #fff; */
       border-radius: 30px;
-      //position: absolute;
+      /* position: absolute; */
       height: 70vh;
       width: 80vw;
       margin: 2% 8%;
-      //backdrop-filter: blur(10px);
+      /* backdrop-filter: blur(10px); */
       display: flex;
 }
 
@@ -595,12 +630,13 @@ ul{
       margin:20px;
       box-shadow: 5px 5px 20px black;
       overflow: hidden;
+      border-radius: 10px;
   }
   
   .card img{
       height: 100%;
       width: 100%;
-      border-radius: 3px;
+      border-radius: 10px;
   }
   
   .intro{
@@ -609,7 +645,7 @@ ul{
       padding:6px;
       box-sizing: border-box;
       position: absolute;
-      bottom:-530px;
+      bottom: -530px;
       background: rgb(27,27,27,.5);
       color: white;
       transition: .5s;
@@ -633,10 +669,6 @@ ul{
       visibility: hidden;
       opacity: 0;
       overflow: hidden;
-  }
-  
-  .card:hover{
-      cursor: pointer;
   }
   
   .card:hover .intro{
