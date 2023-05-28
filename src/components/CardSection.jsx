@@ -21,8 +21,7 @@ return(
             <img src={Card2} alt=""/>
             <div className="intro">
                 <h2>Resources</h2>
-                <p>get amazing content at just one click and that too free of cost.
-                </p>
+                <p>get amazing content at just one click and that too free of cost.</p>
             </div>
         </div>
 

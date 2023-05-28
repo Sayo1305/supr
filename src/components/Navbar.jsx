@@ -18,14 +18,14 @@ const Navbar = () => {
     <div className="navbar">
       <div className="navleft">
         <img src={logo} alt=""/>
-      <ul>
-        <div className="navbar-features">
-          <li>1:1 session</li>
-          <li>Resources</li>
-          <li>Contribution</li>
-          <li>Projects</li>
-        </div>
-      </ul>
+        <ul>
+          <div className="navbar-features">
+            <li>1:1 session</li>
+            <li>Resources</li>
+            <li>Contribution</li>
+            <li>Projects</li>
+          </div>
+        </ul>
       </div>
       <div className="navright">
         <button id="login" className="btn">Login</button>
