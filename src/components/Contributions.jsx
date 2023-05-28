@@ -1,5 +1,4 @@
 import React from 'react';
-import "../assets/css/contri.css";
 import BG from "../assets/images/kuchbhi.jpg";
 import skill1 from "../assets/images/Skilllll.jpeg"
 const Contributions = () => {

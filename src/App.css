@@ -532,3 +532,129 @@ ul{
       margin: 0 auto;
       padding: 10px 10px;
 }
+
+/* Contribution Section */
+
+.title{
+      height: 100vh;
+      background: linear-gradient(to bottom , #151934 , #071226);
+      padding-top: 50px;
+      padding: 20px;
+      width: 100%;
+      height: 100vh;
+  }
+  
+  
+  /* title */
+  
+  
+  .title{
+      padding: 20px;
+  }
+  
+  .title p{
+      color: aqua;
+      font-family: 'Montserrat', sans-serif;
+  }
+  
+  
+  /* skills */
+  
+  
+  .skillContainer{
+      margin-top: 3%;
+      align-items: center;
+      display: flex;
+      justify-content: space-around;
+  }
+  
+  
+  .skillLearning h1{
+      margin: 50px;
+      text-align: center;
+  }
+  
+  
+  .skillContainer img{
+      width: 35%;
+      border: 2px solid rgb(54, 71, 54);
+      border-radius: 30px;
+  }
+
+  /* Cards Section */
+
+  .container{
+      display: flex;
+      justify-content: center;
+      height: 100vh;
+      align-items: center;
+      background: linear-gradient(to bottom, #151934, #071226);
+  }
+  
+  .card{
+      height:400px;
+      width: 350px;
+      margin:20px;
+      box-shadow: 5px 5px 20px black;
+      overflow: hidden;
+  }
+  
+  .card img{
+      height: 100%;
+      width: 100%;
+      border-radius: 3px;
+  }
+  
+  .intro{
+      height: 90px;
+      width: 264px;
+      padding:6px;
+      box-sizing: border-box;
+      position: absolute;
+      bottom:-530px;
+      background: rgb(27,27,27,.5);
+      color: white;
+      transition: .5s;
+  }
+  
+  .intro h2{
+      margin: 10px;
+      font-size: 1.5rem;
+      text-align: center;
+      background: linear-gradient(
+          to right, #05f571, #0599f5,
+          #05f571, #0599f5);
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip:text;
+      background-clip:text;
+  }
+  
+  .intro p{
+      margin:15px;
+      font-size: 18px;
+      visibility: hidden;
+      opacity: 0;
+      overflow: hidden;
+  }
+  
+  .card:hover{
+      cursor: pointer;
+  }
+  
+  .card:hover .intro{
+      height: 220px;
+      bottom: -530px;
+      background: #151934;
+  }
+  
+  .card:hover p{
+      /* opacity: 1;
+      overflow: hidden; */
+      visibility: visible; 
+      transform: translateY(-5%);
+      opacity: 1;
+  }
+  
+  .card:hover img{
+      transform:scale(1.1) rotate(-3deg);
+  }
