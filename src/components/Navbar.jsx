@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logo from "../assets/images/logo.png";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, Link} from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
@@ -18,14 +18,14 @@ const Navbar = () => {
     <div className="navbar">
       <div className="navleft">
         <img src={logo} alt=""/>
-        <ul>
-          <div className="navbar-features">
-            <li>1:1 session</li>
-            <li>Resources</li>
-            <li>Contribution</li>
-            <li>Projects</li>
-          </div>
-        </ul>
+      <ul>
+        <div className="navbar-features">
+          <li>1:1 session</li>
+          <li>Resources</li>
+          <li>Contribution</li>
+          <Link to={'/projects'}><li>Projects</li></Link>
+        </div>
+      </ul>
       </div>
       <div className="navright">
         <button id="login"  onClick={() => {
