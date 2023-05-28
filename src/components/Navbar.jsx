@@ -28,8 +28,12 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navright">
-        <button id="login" className="btn">Login</button>
-        <button id="signup" className="btn">Signup</button>
+        <button id="login"  onClick={() => {
+              navigate('/Login')
+            }} className="btn">Login</button>
+        <button id="signup"  onClick={() => {
+            navigate('/Signup')
+          }} className="btn">Signup</button>
       </div>
       {/* <ul>
         <div className="navbar-features">
@@ -52,8 +56,8 @@ const Navbar = () => {
           }}
           >Sign up</li>
         </div>
-      </ul> */}
-    </div>
+      </ul>  */}
+    </div> 
   );
 };
 
