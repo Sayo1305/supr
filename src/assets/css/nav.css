@@ -8,6 +8,22 @@ ul{
     position: fixed;
     top: 0;
     background: transparent;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navleft{
+    display: flex;
+    justify-content: space-between;
+}
+
+.navlogo{
+    display: flex;
+    flex-direction: column;
+}
+
+.navlogo span{
+    color: #fff;
 }
 
 .navbar ul{

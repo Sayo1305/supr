@@ -13,7 +13,7 @@ return(
             <img src={Card1} alt=""/>
             <div className="intro">
                 <h2>1 on 1 Call</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur labore error consequuntur inventore aliquid eius fuga culpa ipsum vitae maiores voluptatem, cumque odit minima deserunt.
+                <p>Book a 1 on 1 session with your favorite mentor.
                 </p>
             </div>
         </div>
@@ -22,7 +22,7 @@ return(
             <img src={Card2} alt=""/>
             <div className="intro">
                 <h2>Resources</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur labore error consequuntur inventore aliquid eius fuga culpa ipsum vitae maiores voluptatem, cumque odit minima deserunt.
+                <p>get amazing content at just one click and that too free of cost.
                 </p>
             </div>
         </div>
@@ -31,7 +31,7 @@ return(
             <img src={Card3} alt=""/>
             <div className="intro">
                 <h2>Project Contribution</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur labore error consequuntur inventore aliquid eius fuga culpa ipsum vitae maiores voluptatem, cumque odit minima deserunt.
+                <p>Struggling with your ongoing personal project? get help.
                 </p>
             </div>
         </div>
@@ -40,7 +40,7 @@ return(
             <img src={Card4} alt=""/>
             <div className="intro">
                 <h2>Video Contribution</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur labore error consequuntur inventore aliquid eius fuga culpa ipsum vitae maiores voluptatem, cumque odit minima deserunt.
+                <p>do something for the community and add your valuable skills.
                 </p>
             </div>
         </div>

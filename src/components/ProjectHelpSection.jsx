@@ -3,7 +3,7 @@ import projectPic from '../assets/images/projectHelpPic.jpg'
 const ProjectSection = () =>{
     return(
         <div className='ProjectSectionContainer'>
-            <h1>Get Project Assistance</h1>
+            <div className="MentorHeading">Project Assistance</div>
             <div className="projectContainer">
                 <img src={projectPic} alt="" />
                 <div className="textandhead2">

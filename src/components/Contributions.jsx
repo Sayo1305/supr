@@ -4,17 +4,10 @@ import BG from "../assets/images/kuchbhi.jpg";
 import skill1 from "../assets/images/Skilllll.jpeg"
 const Contributions = () => {
     return (
-        <div className='Contri'>
+        <div>
             <div className="title">
-                <div className="instructors">
-                    <h1>Instructors</h1>
-                    <div className="instructor-images">
-                        <img src={BG} alt="" />
-                        <p className='instructor-name'>Name</p>
-                    </div>
-                </div>
                 <div className="skillLearning">
-                    <h1>Skills to learn</h1>
+                <div className="MentorHeading">Community Contribution</div>
                     <div className="skillContainer">
                         <div className="textandhead2">
                             <h2>"Unlock Your Potential with Skill Videos: Master Specific Skills at Your Own Pace"</h2>
