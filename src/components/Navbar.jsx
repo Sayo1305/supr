@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "../assets/css/nav.css";
-import BG from "../assets/images/kuchbhi.jpg";
+import logo from "../assets/images/logo.png";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+
 const Navbar = () => {
   const [data, setdata] = useState("hello world");
   const navigate = useNavigate();
@@ -16,7 +16,22 @@ const Navbar = () => {
   
   return (
     <div className="navbar">
-      <ul>
+      <div className="navleft">
+        <img src={logo} alt=""/>
+        <ul>
+          <div className="navbar-features">
+            <li>1:1 session</li>
+            <li>Resources</li>
+            <li>Contribution</li>
+            <li>Projects</li>
+          </div>
+        </ul>
+      </div>
+      <div className="navright">
+        <button id="login" className="btn">Login</button>
+        <button id="signup" className="btn">Signup</button>
+      </div>
+      {/* <ul>
         <div className="navbar-features">
           <li>One on one session</li>
           <li>Contribution</li>
@@ -37,7 +52,7 @@ const Navbar = () => {
           }}
           >Sign up</li>
         </div>
-      </ul>
+      </ul> */}
     </div>
   );
 };
