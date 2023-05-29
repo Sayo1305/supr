@@ -616,7 +616,7 @@ ul{
 
   /* Cards Section */
 
-  .container{
+  /* .container{
       display: flex;
       justify-content: center;
       height: 100vh;
@@ -631,6 +631,7 @@ ul{
       box-shadow: 5px 5px 20px black;
       overflow: hidden;
       border-radius: 10px;
+       position:relative; 
   }
   
   .card img{
@@ -652,7 +653,7 @@ ul{
   }
   
   .intro h2{
-      //margin: 10px;
+      margin: 10px;
       font-size: 1.5rem;
       text-align: center;
       background: linear-gradient(
@@ -674,12 +675,13 @@ ul{
   .card:hover .intro{
       height: 220px;
       bottom: -530px;
+      height: 30vh;
       background: #151934;
   }
   
   .card:hover p{
-      /* opacity: 1;
-      overflow: hidden; */
+      opacity: 1;
+      overflow: hidden; 
       visibility: visible; 
       transform: translateY(-5%);
       opacity: 1;
@@ -687,4 +689,103 @@ ul{
   
   .card:hover img{
       transform:scale(1.1) rotate(-3deg);
+  } */
+
+
+
+  /* ----------------- */
+  .container{
+      display: flex;
+      justify-content: center;
+      height: 80vh;
+      align-items: center;
+      /* flex-wrap: wrap; */
   }
+  .container img{
+      height: 65vh;
+      width: 25vw;
+      background: whitesmoke;
+  }
+  .card{
+      height: 65vh;
+      margin: 10px;
+      box-shadow: 15px 15px 45px gray;
+      overflow: hidden;
+      border-radius: 5%;
+      position: relative;
+  }
+  
+  .intro{
+      height: 12vh;
+      width: 24vw;
+      padding: 4px;
+      box-sizing: border-box;
+      bottom: 0px;
+      position: absolute;
+      background: rgb(27,27,27,.5);
+      border-radius: 8px;
+      transition: 1s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+  .intro h1{
+      margin: 10px;
+      text-align: center;
+      font-family: "Readex Pro", Sans-serif;
+      font-size: 1.5rem;
+      align-items: center;
+      background: linear-gradient(
+          to right, #05f571, #0599f5,
+          #05f571, #0599f5);
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip:text;
+      background-clip:text;
+  }
+  
+  .intro h3{
+      
+      visibility: hidden;
+      opacity: 0;
+  }
+  
+  .intro button{
+      border: black;
+      visibility: hidden;
+  }
+  
+  .intro button a:visited, .intro button a {
+      color: white;
+  }
+  
+  .card:hover{
+      cursor: pointer;
+  }
+  
+  .card:hover .intro{
+      height: 30vh;
+      background: #151934;
+
+  }
+  
+  .card:hover .intro h3{
+      visibility: visible;
+      font-family: "Readex Pro", Sans-serif;
+      text-align: center;
+      opacity: 1;
+      
+  }
+  
+  .card:hover .intro button{
+      visibility: visible;
+      padding: 15px 30px;
+      border-radius: 30px;
+      background-color: black;
+      color: white;
+      font-family: "Readex Pro", Sans-serif;
+      font-weight: bold;
+      cursor: pointer;
+      width: 50%;
+  }
+  
+  
