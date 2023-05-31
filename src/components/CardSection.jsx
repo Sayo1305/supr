@@ -1,8 +1,8 @@
 import React from 'react';
-import Card1 from "../assets/images/card1.jpg";
-import Card2 from "../assets/images/card2.jpg";
-import Card3 from "../assets/images/card3.jpg";
-import Card4 from "../assets/images/card4.jpg";
+import Card from "../assets/images/cardA.jpg";
+import Card2 from "../assets/images/cardB.jpg";
+import Card3 from "../assets/images/cardC.jpg";
+import Card4 from "../assets/images/cardD.jpg";
 // import { Link } from "react-router-dom";
 
 const CardSection = () => {
@@ -48,10 +48,10 @@ return(
 
 
 
-    <div className="heading">OUR PRODUCTS
+    <div className="heading">
         <div className="container">
             <div className="card">
-                <img src={Card1} alt="pets"/>
+                <img src={Card} alt="pets"/>
                 <div className="intro">
                     <h1>1 on 1 Call</h1>
                     <h3>Book a 1 on 1 session with your favorite mentor.</h3>
