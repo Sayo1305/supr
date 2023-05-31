@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { AiOutlinePlus, AiOutlineClose } from "react-icons/ai";
-import Navbar from '../components/Navbar'
 import '../assets/css/ProjectPage.css'
 import { Link } from 'react-router-dom';
 
@@ -38,7 +37,6 @@ const ProjectDescriptionPage = () => {
             </div>
             {!apply && (
                 <div className="projecthero">
-                    <Navbar />
                     <div className="projectheading">
                         <div className="header">
                             <span id='projspan1'>Project Name<br /></span>
@@ -79,7 +77,6 @@ const ProjectDescriptionPage = () => {
             )}
             {apply && (
                 <div className="projecthero opacity">
-                    <Navbar />
                     <div className="projectheading">
                         <div className="header">
                             <span id='projspan1'>Project Name<br /></span>
