@@ -1,5 +1,4 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
 import '../assets/css/ProjectPage.css'
 import card4 from '../assets/images/card4.jpg'
 import { AiOutlinePlus } from "react-icons/ai";
@@ -8,7 +7,6 @@ import {MdOutlinePeopleOutline} from "react-icons/md"
 const ProjectPage = () => {
     return (
         <div>
-            <Navbar />
             <div className="projecthero">
                 <div className="projectheading">
                     <div className="header">
