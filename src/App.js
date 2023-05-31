@@ -8,6 +8,7 @@ import ResourcePage from './pages/ResourcePage';
 import ProjectDescriptionPage from './pages/ProjectDescriptionPage';
 import Navbar from './components/Navbar';
 import Mentor from './pages/Mentor';
+import CreatePostPage from './pages/CreatePostPage';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path='/Resources' element={<ResourcePage/>}></Route>
         <Route path='/Mentors' element={<Mentor/>}></Route>
         <Route path='/desc' element={<ProjectDescriptionPage/>}></Route>
+        <Route path='/postpage' element={<CreatePostPage/>}></Route>
       </Routes>
     </div>
   );

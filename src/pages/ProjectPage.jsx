@@ -15,7 +15,7 @@ const ProjectPage = () => {
                         <span id='projspan1'>Project Help<br /></span>
                         <span id='projspan2'>Work with top community members to bring your ideas to life.</span>
                     </div>
-                    <div><button className='addbtn'><AiOutlinePlus />Create Post</button></div>
+                    <div><button className='addbtn' onClick={() => {navigate("/postpage")}}><AiOutlinePlus />Create Post</button></div>
                 </div>
                 <div className="recentposts">
                     <span id='postheading'>Recent Posts</span>
