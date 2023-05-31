@@ -15,7 +15,7 @@ function Login() {
     <div className="loginContainer">
        <div className="loginBox">
         <div className="welcome">
-          WELCOME
+          WELCOME BACK
         </div>
         <div className="inputContainer">
           <input type="text" placeholder="Email" className="box"/>
