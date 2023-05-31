@@ -23,7 +23,7 @@ const CreatePostPage = () => {
             <div className="projecthero">
                 <div className="projectheading">
                     <div className="header">
-                        <span id='projspan1'>Hello Rajpreet, take help from your fellow developers<br /></span>
+                        <span id='projspan1'>Hello, take help from your fellow developers<br /></span>
                         <span id='projspan2'>Work with top community members to bring your ideas to life.</span>
                     </div>
                 </div>
