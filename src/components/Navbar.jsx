@@ -78,7 +78,9 @@ const Navbar = () => {
             />
             <ul>
               <div className="navbar-features">
-                <li>1:1 session</li>
+                <li onClick={()=>{
+                  navigate('/Mentors');
+                }}>1:1 session</li>
                 <li
                   onClick={() => {
                     navigate("/Resources");
