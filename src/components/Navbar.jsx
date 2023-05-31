@@ -23,7 +23,7 @@ const Navbar = () => {
           <li>1:1 session</li>
           <li>Resources</li>
           <li>Contribution</li>
-          <Link to={'/projects'}><li>Projects</li></Link>
+          <li on onClick={() => {navigate('/projects')}}>Projects</li>
         </div>
       </ul>
       </div>

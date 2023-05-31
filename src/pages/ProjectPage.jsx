@@ -4,8 +4,10 @@ import '../assets/css/ProjectPage.css'
 import card4 from '../assets/images/card4.jpg'
 import { AiOutlinePlus } from "react-icons/ai";
 import {MdOutlinePeopleOutline} from "react-icons/md"
+import { useNavigate} from "react-router-dom";
 
 const ProjectPage = () => {
+    const navigate = useNavigate();
     return (
         <div>
             <Navbar />
@@ -34,7 +36,7 @@ const ProjectPage = () => {
                                 </div>
                                 <p id='cardspan3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. At perspiciatis maxime voluptatum...</p>
                                 <div className='viewers'>
-                                    <button id='contributebtn'>contribute</button>
+                                    <button id='contributebtn' onClick={() => {navigate('/desc')}}>contribute</button>
                                     <span id='people'><MdOutlinePeopleOutline size={30}/></span>
                                 </div>
                             </div>
