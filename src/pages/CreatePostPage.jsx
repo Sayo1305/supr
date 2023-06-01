@@ -1,11 +1,29 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import '../assets/css/ProjectPage.css'
-import { Link } from 'react-router-dom'
+import { uid } from "uid";
+import { ref, set, serverTimestamp } from "firebase/database";
+import { db } from "../firebase";
+import {useNavigate} from "react-router-dom";
+import Swal from "sweetalert2";
 
 const CreatePostPage = () => {
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      });
+
+    const navigate = useNavigate();
     const [technologyInput, setTechnologyInput] = useState('');
     const [technologies, setTechnologies] = useState([]);
-
+    const [projname, setprojname] = useState("");
+    const [projdesc, setprojdesc] = useState("");
+    const [projproblem, setprojproblem] = useState("");
+    const [link, setlink] = useState("");
+    
     //NOTE: trim() method is used to remove whitespaces from the text
     //The ... is known as the spread operator in JavaScript. In the context of [...technologies, trimmedInput], it is used to create a new array by spreading the elements of the existing technologies array and then adding the trimmedInput value at the end.
     //For example, let's say the initial technologies array is ['HTML', 'CSS'], and trimmedInput is 'JavaScript'. The expression [...technologies, trimmedInput] will create a new array ['HTML', 'CSS', 'JavaScript'], combining the existing technologies with the new technology.
@@ -17,6 +35,31 @@ const CreatePostPage = () => {
             setTechnologyInput('');
         }
     };
+
+    const handle_submit = () => {
+        try {
+            const uniqueId = uid(16);
+            set(ref(db, `ProjectPosts/${uniqueId}`), {
+                id: uniqueId,
+                projname: projname,
+                technologies: technologies,
+                projdesc: projdesc,
+                projproblem: projproblem,
+                link: link,
+                timestamp: serverTimestamp(),
+            })
+            navigate('/projects');
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const handle_emptyformsubmit = () => {
+        Toast.fire({
+            title: "Fill all details",
+            icon: "error",
+        });
+    }
 
     return (
         <div>
@@ -30,7 +73,7 @@ const CreatePostPage = () => {
                 <div className="probstmtcontainer">
                     <span id='projsubheading'>Project Name</span>
                     <div className='postbox'>
-                        <textarea name="message" placeholder="Enter Project Name"></textarea>
+                        <textarea name="message" placeholder="Enter Project Name" onChange={(e) => {setprojname(e.target.value)}}></textarea>
                     </div>
                 </div>
                 <div className="projectTechnologiesContainer">
@@ -52,22 +95,32 @@ const CreatePostPage = () => {
                 <div className="projectDescContainer">
                     <span id='projsubheading'>Project Description</span>
                     <div className='postbox'>
-                        <textarea name="message" placeholder="Give brief description of the project..."></textarea>
+                        <textarea name="message" placeholder="Give brief description of the project..." onChange={(e) => {setprojdesc(e.target.value)}}></textarea>
                     </div>
                 </div>
                 <div className="probstmtcontainer">
                     <span id='projsubheading'>Problem statement</span>
                     <div className='postbox'>
-                        <textarea name="message" placeholder="Enter the problem statement..."></textarea>
+                        <textarea name="message" placeholder="Enter the problem statement..." onChange={(e) => {setprojproblem(e.target.value)}}></textarea>
                     </div>
                 </div>
                 <div className="githubLinkContainer postlink">
                     <span id='projsubheading'>Github Project Link</span>
                     <div className='postlinkbox'>
-                        <textarea name="message" placeholder="Enter Github link of the project..."></textarea>
+                        <textarea name="message" placeholder="Enter Github link of the project..." onChange={(e) => {setlink(e.target.value)}}></textarea>
                     </div>
                 </div>
-                <div><button className='publishbtn'>publish</button></div>
+                {projname && projdesc && projproblem && link && (
+                    <div><button className='publishbtn' onClick={handle_submit}>publish</button></div>
+                )}
+                 {!projname && !projdesc && !projproblem && !link && (
+                    <div>
+                        <button className='publishbtn' onClick={handle_emptyformsubmit}>publish</button>
+                        
+                    </div>
+
+                )}
+                
             </div>
         </div>
     )

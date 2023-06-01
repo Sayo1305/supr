@@ -1,10 +1,32 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { AiOutlinePlus, AiOutlineClose } from "react-icons/ai";
 import '../assets/css/ProjectPage.css'
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { db } from '../firebase';
+import { onValue, ref } from 'firebase/database';
 
 const ProjectDescriptionPage = () => {
     const [apply, setapply] = useState(false);
+    const [Data, setData] = useState([]);
+    const [Technologies, setTechnologies] = useState([]);
+    const { id } = useParams();
+
+    useEffect(() => {
+        onValue(ref(db, `ProjectPosts/${id}`), (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+                const dataKeys = Object.keys(data);
+                let arr = [];
+                for (let i = 0; i < dataKeys.length; i++) {
+                    arr.push(data[dataKeys[i]]);
+                }
+                console.log(data.technologies);
+                setData(data);
+                setTechnologies(data.technologies);
+            }
+        });
+    }, []);
+
     return (
         <div>
             <div className={`${apply ? 'appform_focus' : 'appform'}`}>
@@ -39,7 +61,7 @@ const ProjectDescriptionPage = () => {
                 <div className="projecthero">
                     <div className="projectheading">
                         <div className="header">
-                            <span id='projspan1'>Project Name<br /></span>
+                            <span id='projspan1'>{Data.projname}<br /></span>
                             <span id='projspan2'>Work with top community members to bring your ideas to life.</span>
                         </div>
                         <div><button className='addbtn' onClick={() => { setapply(current => !current) }}><AiOutlinePlus />Contribute</button></div>
@@ -47,30 +69,27 @@ const ProjectDescriptionPage = () => {
                     <div className="projectTechnologiesContainer">
                         <span id='projsubheading'>Technologies Used</span>
                         <div className='technologiesdesc'>
-                            <span>HTML</span>
-                            <span>javascript</span>
-                            <span>HTML</span>
-                            <span>javascript</span>
-                            <span>javascript</span>
-                            <span>javascript</span>
+                            {Technologies.map((tech) => (
+                                <span>{tech}</span>
+                            ))}
                         </div>
                     </div>
                     <div className="projectDescContainer">
                         <span id='projsubheading'>Project Description</span>
                         <div className='descbox'>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit corrupti sint consequatur voluptates eaque dicta ad placeat dolor magnam rerum, harum neque soluta? Est modi sequi, veniam veritatis accusamus adipisci.</p>
+                            <p>{Data.projdesc}</p>
                         </div>
                     </div>
                     <div className="probstmtcontainer">
                         <span id='projsubheading'>Problem statement</span>
                         <div className='descbox'>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit corrupti sint consequatur voluptates eaque dicta ad placeat dolor magnam rerum, harum neque soluta? Est modi sequi, veniam veritatis accusamus adipisci.</p>
+                            <p>{Data.projproblem}</p>
                         </div>
                     </div>
                     <div className="githubLinkContainer">
                         <span id='projsubheading'>Github Project Link</span>
                         <div className='linkbox'>
-                            <Link to={'#'}><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit corrupti sint consequatur voluptates eaque dicta ad placeat dolor magnam rerum, harum neque soluta? Est modi sequi, veniam veritatis accusamus adipisci.</p></Link>
+                            <p>{Data.link}</p>
                         </div>
                     </div>
                 </div>
