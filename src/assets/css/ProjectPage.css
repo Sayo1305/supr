@@ -224,10 +224,10 @@
     position: absolute;
     background: linear-gradient(to top, #151934, #071226);
     display: flex;
-    top: 5%;
+    /* top: 5%;
     left: 25vw;
     width: 50vw;
-    height: auto;
+    height: auto; */
     z-index: 200;
     opacity: 1;
     border: 1px solid #fff;
@@ -286,11 +286,12 @@
 
 .appbtn{
     margin-top: 4%;
-    padding: 5px;
+    padding: 15px;
     background: transparent;
     border: 1px solid #fff;
     color: #fff;
     align-items: center;
+    width: 20%;
 }
 
 .postbox textarea, .postlinkbox textarea{

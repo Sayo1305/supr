@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../assets/css/ProjectPage.css'
 import { uid } from "uid";
-import { ref, set, serverTimestamp } from "firebase/database";
+import { ref, set, serverTimestamp, onValue} from "firebase/database";
 import { db } from "../firebase";
 import {useNavigate} from "react-router-dom";
 import Swal from "sweetalert2";
@@ -23,6 +23,7 @@ const CreatePostPage = () => {
     const [projdesc, setprojdesc] = useState("");
     const [projproblem, setprojproblem] = useState("");
     const [link, setlink] = useState("");
+    const [Email, setEmail] = useState("");
     
     //NOTE: trim() method is used to remove whitespaces from the text
     //The ... is known as the spread operator in JavaScript. In the context of [...technologies, trimmedInput], it is used to create a new array by spreading the elements of the existing technologies array and then adding the trimmedInput value at the end.
@@ -46,6 +47,7 @@ const CreatePostPage = () => {
                 projdesc: projdesc,
                 projproblem: projproblem,
                 link: link,
+                Email: Email,
                 timestamp: serverTimestamp(),
             })
             navigate('/projects');
@@ -60,6 +62,15 @@ const CreatePostPage = () => {
             icon: "error",
         });
     }
+
+    const userId = localStorage.getItem("suprUserId");
+
+    useEffect(() => {
+        onValue(ref(db, `Users/${userId}`), (snapshot) => {
+            const data = snapshot.val();
+            setEmail(data.email);
+        });
+    }, []);
 
     return (
         <div>
@@ -115,10 +126,8 @@ const CreatePostPage = () => {
                 )}
                  {!projname && !projdesc && !projproblem && !link && (
                     <div>
-                        <button className='publishbtn' onClick={handle_emptyformsubmit}>publish</button>
-                        
+                        <button className='publishbtn' onClick={handle_emptyformsubmit}>publish</button>   
                     </div>
-
                 )}
                 
             </div>
