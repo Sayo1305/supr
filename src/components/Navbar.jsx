@@ -64,7 +64,7 @@ const Navbar = () => {
     //   </div>
     
     <>
-      {pathname.includes("login") || pathname.includes("Signup") ? (
+      {pathname.includes("login") || pathname.includes("Signup") || pathname.includes("profile") ? (
         <div style={{ display: "hidden" }}></div>
       ) : (
         <div className="navbar">
@@ -123,12 +123,13 @@ const Navbar = () => {
                 <div className="NavbarProfileText">Hi!! {user[3]}</div>
                 {chooseimage === false ? (
                   <img
+                  onClick={()=>{navigate('/profile')}}
                     className="NavbarProfile"
                     src={womanprofile}
                     alt="profile"
                   />
                 ) : (
-                  <img className="NavbarProfile" src={BG} alt="profile" />
+                  <img onClick={()=>{navigate('/profile')}} className="NavbarProfile" src={BG} alt="profile" />
                 )}
               </>
             )}
