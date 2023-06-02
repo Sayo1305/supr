@@ -717,7 +717,7 @@ ul{
   
   .intro{
       height: 12vh;
-      width: 24vw;
+      width: 23.3vw;
       padding: 4px;
       box-sizing: border-box;
       bottom: 0px;
@@ -787,5 +787,3 @@ ul{
       cursor: pointer;
       width: 50%;
   }
-  
-  
