@@ -4,7 +4,7 @@ import card4 from '../assets/images/card4.jpg'
 import { AiOutlinePlus } from "react-icons/ai";
 import { MdOutlinePeopleOutline } from "react-icons/md"
 import { useNavigate } from "react-router-dom";
-import { child, get, onValue, ref } from "firebase/database";
+import { onValue, ref } from "firebase/database";
 import { db } from "../firebase";
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -61,7 +61,7 @@ const ProjectPage = () => {
                                     </div>
                                     <p id='cardspan3'>{item.projdesc.slice(0, 100)}...</p>
                                     <div className='viewers'>
-                                        <button id='contributebtn' onClick={() => { navigate(`/desc/${item.id}`) }}>contribute</button>
+                                        <button id='contributebtn' onClick={() => { navigate(`/desc/${item.id}`) }}>Learn more!</button>
                                         <span id='people'><MdOutlinePeopleOutline size={30} /></span>
                                     </div>
                                 </div>
@@ -82,7 +82,7 @@ const ProjectPage = () => {
                                 </div>
                                 <p id='cardspan3'>{item.projdesc.slice(0,150)}...</p>
                                 <div className='viewers viewersdark'>
-                                    <button id='contributebtndark' className='btndark' onClick={() => { navigate(`/desc/${item.id}`) }}>contribute</button>
+                                    <button id='contributebtndark' className='btndark' onClick={() => { navigate(`/desc/${item.id}`) }}>Learn more!</button>
                                     <span id='people'><MdOutlinePeopleOutline size={30} /></span>
                                 </div>
                             </div>

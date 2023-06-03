@@ -13,10 +13,15 @@ const Navbar = () => {
   const location = useLocation();
   const [pathname, setPathname] = useState(location.pathname);
   const [chooseimage, setchooseimage] = useState(false);
+  const handle_logout = ()=>{
+    setuser([]);
+    localStorage.removeItem("suprUserId");
+  }
   useEffect(() => {
     setPathname(location.pathname);
   }, [location]);
   useEffect(() => {
+    console.log("Successfully")
     onValue(ref(db, `Users/${userId}`), (snapshot) => {
       const data = snapshot.val();
       if (data) {
@@ -31,7 +36,7 @@ const Navbar = () => {
         setuser(arr);
       }
     });
-  }, []);
+  }, [userId]);
   const navigate = useNavigate();
   const Toast = Swal.mixin({
     toast: true,
@@ -101,7 +106,7 @@ const Navbar = () => {
                 <button
                   id="login"
                   onClick={() => {
-                    navigate("/Login");
+                    navigate("/login");
                   }}
                   className="btn"
                 >
@@ -131,6 +136,7 @@ const Navbar = () => {
                 ) : (
                   <img onClick={()=>{navigate('/profile')}} className="NavbarProfile" src={BG} alt="profile" />
                 )}
+                <div onClick={handle_logout} className="NavbarLogoutButton">Logout</div>
               </>
             )}
           </div>
