@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.ResourcePageDesc_Conatiner{
+    background: linear-gradient(to top , #151934 , #071226);
+    padding: 50px;
+}
+
+.ResDesc{
+    text-align: center;
+}
+
+.ResDesc h1{
+    font-size: 400%;
+    color: bisque;
+}
+
+.ResDesc p{
+    color: beige;
+}
+
+.ResDesc img{
+    width: 30%;
+}
+
+.ResDescButtons{
+    text-align: center;
+}
+
+.ResDescButtons button{
+    border: none;
+    background: linear-gradient(to top , #4388a3 , #25cf83);
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    margin: 50px;
+    padding: 20px;
+}

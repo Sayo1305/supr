@@ -10,7 +10,7 @@ const MentorFormModal = ({ openmodal, setopenmodal }) => {
       onClickAway={() => setopenmodal(false)}
     >
       <div className="MentorModalContainer">
-        <div className="MentorModalcross" onClick={()=>{setopenmodal(false)}}>
+        <div className="MentorModalcross" onClick={() => { setopenmodal(false) }}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="26"

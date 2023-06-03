@@ -6,7 +6,7 @@ const Mentor = () => {
   const [openmodal, setopenmodal] = useState(false);
   return (
     <>
-    <MentorFormModal openmodal={openmodal} setopenmodal={setopenmodal}/>
+      <MentorFormModal openmodal={openmodal} setopenmodal={setopenmodal} />
       <div className="MentorContainer">
         <div className="MentorHead">
           Chat or Book 1 on 1 Session with our Mentors

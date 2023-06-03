@@ -25,7 +25,7 @@ const Navbar = () => {
         for (let i = 0; i < dataKeys.length; i++) {
           arr.push(data[dataKeys[i]]);
         }
-        if (arr[1] === "male") {
+        if (arr[1] === "Male") {
           setchooseimage(true);
         }
         setuser(arr);

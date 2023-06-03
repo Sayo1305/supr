@@ -10,6 +10,7 @@ import Navbar from './components/Navbar';
 import Mentor from './pages/Mentor';
 import CreatePostPage from './pages/CreatePostPage';
 import Profile from './pages/Profile';
+import ResourceDescPage from './pages/ResourceDescPage';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path ='/profile' element={<Profile/>}/>
         <Route path='/desc/:id' element={<ProjectDescriptionPage/>}></Route>
         <Route path='/postpage' element={<CreatePostPage/>}></Route>
+        <Route path='/ResourceDesc/:id' element={<ResourceDescPage/>}></Route>
       </Routes>
     </div>
   );
