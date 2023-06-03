@@ -1,0 +1,133 @@
+import React, { useRef, useEffect, useState } from 'react'
+import Modal from "react-awesome-modal";
+import '../assets/css/ProjectPage.css'
+import { AiOutlineClose } from 'react-icons/ai'
+import emailjs from '@emailjs/browser'
+import { onValue, ref, set, serverTimestamp } from 'firebase/database';
+import { db } from '../firebase';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
+
+const ApplicationFormModal = ({ openmodal, setopenmodal, projid }) => {
+    const navigate = useNavigate();
+    const [fromname, setfromname] = useState(null);
+    const [fromEmail, setfromEmail] = useState(null);
+    const [toEmail, settoEmail] = useState("");
+    const [message, setmessage] = useState("");
+    const [linkedinlink, setlinkedinlink] = useState("");
+    const [githublink, setgithublink] = useState("");
+    const [projname, setprojname] = useState("");
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      });
+
+    const userId = localStorage.getItem("suprUserId");
+    console.log(userId);
+
+    useEffect(() => {
+        onValue(ref(db, `Users/${userId}`), (snapshot) => {
+            const data = snapshot.val();
+            console.log(data.name);
+            setfromname(data.name);
+            setfromEmail(data.email);
+        });
+    }, []);
+
+    useEffect(() => {
+        onValue(ref(db, `ProjectPosts/${projid}`), (snapshot) => {
+            const data = snapshot.val();
+            console.log("hello" + data.Email);
+            settoEmail(data.Email);
+            setprojname(data.projname);
+        });
+    }, []);
+
+    const form = useRef();
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        var templateParams = {
+            from_name: fromname,
+            from_email: fromEmail,
+            to_email: toEmail,
+            projname: projname,
+            message: message,
+            linkedinlink: linkedinlink,
+            githublink: githublink,
+        };
+
+        emailjs.send('service_54jfv0a', 'template_z8d4noh', templateParams, '5acFbYup17yeX42QV')
+            .then((result) => {
+                console.log(result.text);
+                Toast.fire({
+                    title: "Application submitted successfully",
+                    icon: "success",
+                });
+            }, (error) => {
+                console.log(error.text);
+                Toast.fire({
+                    title: "An error has occured, Try again!",
+                    icon: "error",
+                });
+            });
+        e.target.reset();
+
+        set(ref(db, `Contributers/${projid}/${userId}`), {
+            projname: projname,
+            contributerName: fromname,
+            contributerEmail: fromEmail,
+            timestamp: serverTimestamp(),
+        })
+
+        navigate('/projects');
+    }
+    return (
+        <Modal
+            visible={openmodal}
+            width="700"
+            height="530"
+            effect="fadeInUp"
+            onClickAway={() => setopenmodal(false)}
+        >
+            <div>
+                <form className='appform_focus' ref={form} onSubmit={sendEmail}>
+                    <div className="appcontainer">
+                        <span id="cross" onClick={() => { setopenmodal(!openmodal); }}>
+                            <AiOutlineClose style={{ color: '#fff', float: 'right' }} />
+                        </span>
+                        <span id='appspan1'>Apply to contribute in the project<br /></span>
+                        <span id='appspan2'>Write an application message explaining how you will contributing to the project and how the problem will be solved including the approach.</span>
+                        <div className="applicationContainer">
+                            <span id='appsubheading'>Application Message</span>
+                            <div className='appmsg appbox'>
+                                <textarea name="message" placeholder="Enter Application message..." onChange={(e) => {setmessage(e.target.value)}} required></textarea>
+                            </div>
+                            <div className="appgithubLinkContainer">
+                                <span id='appsubheading'>LinkedIn Profile Link</span>
+                                <div className='appbox'>
+                                    <input type="text" name="linkedinlink" placeholder="Enter your LinkedIn profile link" onChange={(e) => {setlinkedinlink(e.target.value)}} required />
+                                </div>
+                            </div>
+                            <div className="appgithubLinkContainer">
+                                <span id='appsubheading'>Github Profile Link</span>
+                                <div className='appbox'>
+                                    <input type="text" name="githublink" placeholder="Enter your github profile link" onChange={(e) => {setgithublink(e.target.value)}} required />
+                                </div>
+                            </div>
+                            <input className='appbtn' type='submit' value='Send Application' />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </Modal>
+
+    )
+}
+
+export default ApplicationFormModal
