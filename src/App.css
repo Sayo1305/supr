@@ -124,6 +124,15 @@ ul{
       cursor: pointer;
   }
   
+  .NavbarLogoutButton{
+      background: rgb(234, 98, 93);
+      color: #fff;
+      padding: 10px 20px;
+      text-align: center;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+  }
   
 
   /* HERO SECTION */

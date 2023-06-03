@@ -1,16 +1,97 @@
-import React from "react";
+import { onValue, ref, set } from "firebase/database";
+import React, { useEffect, useState } from "react";
 import Modal from "react-awesome-modal";
+import Swal from "sweetalert2";
+import { db } from "../firebase";
+import { uid } from "uid";
 const MentorFormModal = ({ openmodal, setopenmodal }) => {
+  const [headline, setheadline] = useState("");
+  const [github, setgithub] = useState("");
+  const [twiter, settwiter] = useState("");
+  const [linkedin, setlinkedin] = useState("");
+  const [imageurl, setimageurl] = useState("");
+  useEffect(()=>{
+    setheadline("");
+    setimageurl("");
+    setlinkedin("");
+    settwiter("");
+    setgithub("");
+  },[openmodal]);
+
+  
+  const wrtitetodb = ()=>{
+    const userId = localStorage.getItem("suprUserId");
+    const unqiueId = uid(15);
+    let arr = [];
+    onValue(ref(db, `Users/${userId}`), (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        const dataKeys = Object.keys(data);
+        for (let i = 0; i < dataKeys.length; i++) {
+          arr.push(data[dataKeys[i]]);
+        }
+      }
+    });
+    set(ref(db , `Mentors/${unqiueId}`) , {
+      id : unqiueId, 
+      name  : arr[3],
+      headline : headline,
+      github : github , 
+      linkedin : linkedin , 
+      twiter : twiter,
+    });
+    setopenmodal(!openmodal);
+  }
+  const handle_submit = () =>{
+    if(headline === "")
+    {
+      setopenmodal(!openmodal);
+      Swal.fire({
+        "text" : "Please fill the form",
+        "icon" : "warning",
+      })
+      return;
+    }
+    wrtitetodb();
+  }
   return (
     <Modal
       visible={openmodal}
       width="700"
-      height="400"
+      height="500"
       effect="fadeInUp"
       onClickAway={() => setopenmodal(false)}
     >
       <div className="MentorModalContainer">
-        <div className="MentorModalcross" onClick={()=>{setopenmodal(false)}}>
+        <div class="file-upload-wrapper">
+          <button class="file-upload-button">Select Profile Image</button>
+          <input
+            onChange={(e) => {
+              setimageurl(e.target.files[0]);
+            }}
+            type="file"
+            class="file-upload-input"
+          />
+        </div>
+        <div>
+          {imageurl !== "" && (
+            <div>
+              <a
+                className="MentorModalPreview"
+                target="_blank"
+                href={URL.createObjectURL(imageurl)}
+              >
+                Preview
+              </a>{" "}
+            </div>
+          )}
+        </div>
+        <div
+          className="MentorModalcross"
+          onClick={() => {
+            setopenmodal(false);
+          }}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="26"
@@ -24,6 +105,9 @@ const MentorFormModal = ({ openmodal, setopenmodal }) => {
         </div>
         <div className="MentorModalInputCont">
           <input
+            onChange={(e) => {
+              setheadline(e.target.value);
+            }}
             className="MentorModalInput"
             type="text"
             placeholder="headline of the Profile"
@@ -31,6 +115,9 @@ const MentorFormModal = ({ openmodal, setopenmodal }) => {
         </div>
         <div className="MentorModalInputCont">
           <input
+            onChange={(e) => {
+              setgithub(e.target.value);
+            }}
             className="MentorModalInput"
             type="text"
             placeholder="Github Profile Link"
@@ -48,6 +135,9 @@ const MentorFormModal = ({ openmodal, setopenmodal }) => {
         </div>
         <div className="MentorModalInputCont">
           <input
+            onChange={(e) => {
+              setlinkedin(e.target.value);
+            }}
             className="MentorModalInput"
             type="text"
             placeholder="Linkedin Profile Link"
@@ -65,6 +155,9 @@ const MentorFormModal = ({ openmodal, setopenmodal }) => {
         </div>
         <div className="MentorModalInputCont">
           <input
+            onChange={(e) => {
+              settwiter(e.target.value);
+            }}
             className="MentorModalInput"
             type="text"
             placeholder="Twitter Profile Link"
@@ -80,7 +173,7 @@ const MentorFormModal = ({ openmodal, setopenmodal }) => {
             <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
           </svg>
         </div>
-        <div className="MentorChat">Submit</div>
+        <div className="MentorChat" onClick={handle_submit}>Submit</div>
       </div>
     </Modal>
   );
