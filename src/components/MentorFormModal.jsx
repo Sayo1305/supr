@@ -10,16 +10,15 @@ const MentorFormModal = ({ openmodal, setopenmodal }) => {
   const [twiter, settwiter] = useState("");
   const [linkedin, setlinkedin] = useState("");
   const [imageurl, setimageurl] = useState("");
-  useEffect(()=>{
+  useEffect(() => {
     setheadline("");
     setimageurl("");
     setlinkedin("");
     settwiter("");
     setgithub("");
-  },[openmodal]);
+  }, [openmodal]);
 
-  
-  const wrtitetodb = ()=>{
+  const wrtitetodb = () => {
     const userId = localStorage.getItem("suprUserId");
     const unqiueId = uid(15);
     let arr = [];
@@ -32,28 +31,27 @@ const MentorFormModal = ({ openmodal, setopenmodal }) => {
         }
       }
     });
-    set(ref(db , `Mentors/${unqiueId}`) , {
-      id : unqiueId, 
-      name  : arr[3],
-      headline : headline,
-      github : github , 
-      linkedin : linkedin , 
-      twiter : twiter,
+    set(ref(db, `Mentors/${unqiueId}`), {
+      id: unqiueId,
+      name: arr[3],
+      headline: headline,
+      github: github,
+      linkedin: linkedin,
+      twiter: twiter,
     });
     setopenmodal(!openmodal);
-  }
-  const handle_submit = () =>{
-    if(headline === "")
-    {
+  };
+  const handle_submit = () => {
+    if (headline === "") {
       setopenmodal(!openmodal);
       Swal.fire({
-        "text" : "Please fill the form",
-        "icon" : "warning",
-      })
+        text: "Please fill the form",
+        icon: "warning",
+      });
       return;
     }
     wrtitetodb();
-  }
+  };
   return (
     <Modal
       visible={openmodal}
@@ -63,7 +61,6 @@ const MentorFormModal = ({ openmodal, setopenmodal }) => {
       onClickAway={() => setopenmodal(false)}
     >
       <div className="MentorModalContainer">
-        <div className="MentorModalcross" onClick={() => { setopenmodal(false) }}>
         <div class="file-upload-wrapper">
           <button class="file-upload-button">Select Profile Image</button>
           <input
@@ -86,23 +83,6 @@ const MentorFormModal = ({ openmodal, setopenmodal }) => {
               </a>{" "}
             </div>
           )}
-        </div>
-        <div
-          className="MentorModalcross"
-          onClick={() => {
-            setopenmodal(false);
-          }}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="26"
-            height="26"
-            fill="#fff"
-            className="bi bi-x-lg"
-            viewBox="0 0 16 16"
-          >
-            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-          </svg>
         </div>
         <div className="MentorModalInputCont">
           <input
@@ -174,8 +154,26 @@ const MentorFormModal = ({ openmodal, setopenmodal }) => {
             <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
           </svg>
         </div>
-        <div className="MentorChat" onClick={handle_submit}>Submit</div>
-      </div>
+        <div
+          className="MentorModalcross"
+          onClick={() => {
+            setopenmodal(false);
+          }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            fill="#fff"
+            className="bi bi-x-lg"
+            viewBox="0 0 16 16"
+          >
+            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+          </svg>
+        </div>
+        <div className="MentorChat" onClick={handle_submit}>
+          Submit
+        </div>
       </div>
     </Modal>
   );
