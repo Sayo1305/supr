@@ -269,7 +269,7 @@
     color: #fff;
 }
 
-.appbox textarea, input{
+.appbox textarea, .appbox input{
     margin-top: 1%;
     border: 2px solid #fff;
     height: auto;
