@@ -29,16 +29,29 @@ const ProjectDescriptionPage = () => {
         });
     }, []);
 
+    useEffect(() => {
+        onValue(ref(db, `Contributors/${id}`), (snapshot) => {
+            console.log("project id: " , id);
+            const data = snapshot.val();
+            console.log(data);
+        });
+    }, []);
+
     return (
         <div>
             <ApplicationFormModal openmodal={openmodal} setopenmodal={setopenmodal} projid={id}/>
             <div className="projecthero">
                 <div className="projectheading">
                     <div className="header">
-                        <span id='projspan1'>{Data.projname}<br /></span>
-                        <span id='projspan2'>Work with top community members to bring your ideas to life.</span>
+                        <span id='projspan1'>{Data.projname}<br/></span>
+                        <span id='projspan2'>a few seconds ago<br/></span>
+                        <div className='open'>open</div>
+                        <div className="close">closed</div>
                     </div>
-                    <div><button className='addbtn' onClick={() => {setopenmodal(!openmodal);}}><AiOutlinePlus />Contribute</button></div>
+                    <div className='headerright'>
+                        <button className='addbtn' onClick={() => {setopenmodal(!openmodal);}}><AiOutlinePlus />Contribute</button>
+                        <span>Contributors: 15</span>
+                    </div>
                 </div>
                 <div className="projectTechnologiesContainer">
                     <span id='projsubheading'>Technologies Used</span>
