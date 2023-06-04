@@ -32,7 +32,6 @@ const Signup = () => {
         .then((userCredential) => {
           const uniqueId = uid(16);
           localStorage.setItem("suprUserId", uniqueId);
-          localStorage.setItem("suprType", "student");
           const user = userCredential.user;
           set(ref(db, `Users/${uniqueId}`), {
             id: uniqueId,

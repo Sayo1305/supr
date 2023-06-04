@@ -269,7 +269,7 @@
     color: #fff;
 }
 
-.appbox textarea, input{
+.appbox textarea, .appbox input{
     margin-top: 1%;
     border: 2px solid #fff;
     height: auto;
@@ -333,4 +333,35 @@
     background: transparent;
     color: #fff;
     padding: 10px;
+}
+
+.headerright{
+    display: flex;
+    flex-direction: column;
+}
+
+.headerright span{
+    color: #fff;
+    font-size: 1.1rem;
+    margin: 5%;
+}
+
+.open{
+    color: #fff;
+    border-radius: 20px;
+    background-color: green;
+    width: 50%;
+    padding: 5px;
+    text-align: center;
+    margin-top: 4%;
+}
+
+.close{
+    color: #fff;
+    border-radius: 20px;
+    background-color: red;
+    width: 50%;
+    padding: 5px;
+    text-align: center;
+    margin-top: 4%;
 }

@@ -1,11 +1,11 @@
 import React from "react";
 import BG from "../assets/images/man.png";
-const MentorCard = () => {
+const MentorCard = ({data}) => {
   return (
     <div className="MentorCardContainer">
       <img className="MentorCardProfile" src={BG} alt="profile" />
-      <div className="MentorCardName">Striver</div>
-      <div className="MentorCardHead">C++ | Youtuber | Google @SDE</div>
+      <div className="MentorCardName">{data.name}</div>
+      <div className="MentorCardHead">{data.headline}</div>
       <div className="MentorCardLinks">
         <svg
           xmlns="http://www.w3.org/2000/svg"
