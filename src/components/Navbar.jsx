@@ -128,13 +128,13 @@ const Navbar = () => {
                 <div className="NavbarProfileText">Hi!! {user[3]}</div>
                 {chooseimage === false ? (
                   <img
-                  onClick={()=>{navigate('/profile')}}
+                  onClick={()=>{navigate(`/profile/${userId}`)}}
                     className="NavbarProfile"
                     src={womanprofile}
                     alt="profile"
                   />
                 ) : (
-                  <img onClick={()=>{navigate('/profile')}} className="NavbarProfile" src={BG} alt="profile" />
+                  <img onClick={()=>{navigate(`/profile/${userId}`);}} className="NavbarProfile" src={BG} alt="profile" />
                 )}
                 <div onClick={handle_logout} className="NavbarLogoutButton">Logout</div>
               </>

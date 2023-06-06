@@ -97,9 +97,9 @@
 .technologies span, .technologiesdesc span{
     /* border: 1px solid yellow; */
     border-radius: 1rem;
-    padding-top: 0;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
     /* padding: 5px; */
     text-align: center;
     background: linear-gradient(245deg, #1ee89c, #957bf0);
@@ -110,6 +110,12 @@
     display: inline-block;
     max-width: 100%;
     overflow: hidden;
+}
+
+.technologiesdesc span{
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .viewers{
@@ -195,7 +201,8 @@
     padding-top: 1%;
 }
 
-.technologiesdesc span{
+.technologiesdescspan span{
+    display: inline-block;
     padding: 0.5rem;
 }
 
@@ -364,4 +371,13 @@
     padding: 5px;
     text-align: center;
     margin-top: 4%;
+}
+
+.technologiesInput{
+    border: 2px solid #fff; 
+    width: 100%;
+    background: transparent;
+    color: #fff;
+    padding : 2%;
+    border-radius: 20px;
 }

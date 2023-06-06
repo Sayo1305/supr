@@ -6,18 +6,12 @@ import { MdOutlinePeopleOutline } from "react-icons/md"
 import { useNavigate } from "react-router-dom";
 import { onValue, ref } from "firebase/database";
 import { db } from "../firebase";
-import dayjs from 'dayjs';
-import relativeTime from 'dayjs/plugin/relativeTime';
-
-
-dayjs.extend(relativeTime);
 
 const ProjectPage = () => {
     const navigate = useNavigate();
     const [oldposts, setoldposts] = useState([]);
     const [recentposts, setrecentposts] = useState([]);
     const currdate = new Date();
-    const createdAt = dayjs(currdate).fromNow();
 
 
     useEffect(() => {

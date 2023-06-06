@@ -50,42 +50,52 @@ const ApplicationFormModal = ({ openmodal, setopenmodal, projid }) => {
     const form = useRef();
 
     const sendEmail = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
 
-        var templateParams = {
-            from_name: fromname,
-            from_email: fromEmail,
-            to_email: toEmail,
-            projname: projname,
-            message: message,
-            linkedinlink: linkedinlink,
-            githublink: githublink,
-        };
+        // var templateParams = {
+        //     from_name: fromname,
+        //     from_email: fromEmail,
+        //     to_email: toEmail,
+        //     projname: projname,
+        //     message: message,
+        //     linkedinlink: linkedinlink,
+        //     githublink: githublink,
+        // };
 
-        emailjs.send('service_54jfv0a', 'template_z8d4noh', templateParams, '5acFbYup17yeX42QV')
-            .then((result) => {
-                console.log(result.text);
-                Toast.fire({
-                    title: "Application submitted successfully",
-                    icon: "success",
-                });
-            }, (error) => {
-                console.log(error.text);
-                Toast.fire({
-                    title: "An error has occured, Try again!",
-                    icon: "error",
-                });
-            });
-        e.target.reset();
+        // emailjs.send('service_54jfv0a', 'template_z8d4noh', templateParams, '5acFbYup17yeX42QV')
+        //     .then((result) => {
+        //         console.log(result.text);
+        //         Toast.fire({
+        //             title: "Application submitted successfully",
+        //             icon: "success",
+        //         });
+        //     }, (error) => {
+        //         console.log(error.text);
+        //         Toast.fire({
+        //             title: "An error has occured, Try again!",
+        //             icon: "error",
+        //         });
+        //     });
+        // e.target.reset();
 
-        set(ref(db, `Contributers/${projid}/${userId}`), {
+        //in this database we have projects and the applicants in this project
+        set(ref(db, `ProjectApplicants/${projid}/${userId}`), {
             projname: projname,
             contributerName: fromname,
             contributerEmail: fromEmail,
             timestamp: serverTimestamp(),
         })
+        
+        //in this database we have users and the projects they have applied to
+        set(ref(db, `MyApplications/${userId}/${projid}`), {
+            contributerName: fromname,
+            projname: projname,
+            contributerEmail: fromEmail,
+            status: "pending",
+            timestamp: serverTimestamp(),
+        })
 
-        navigate('/projects');
+        navigate(`/profile/${userId}`);
     }
     return (
         <Modal

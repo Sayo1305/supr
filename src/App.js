@@ -11,6 +11,7 @@ import Mentor from './pages/Mentor';
 import CreatePostPage from './pages/CreatePostPage';
 import Profile from './pages/Profile';
 import ResourceDescPage from './pages/ResourceDescPage';
+import ChatPage from './pages/ChatPage';
 
 
 function App() {
@@ -25,10 +26,11 @@ function App() {
         <Route path='/Resources' element={<ResourcePage/>}></Route>
         <Route path='/Mentors' element={<Mentor/>}></Route>
         {/* : is used to set the dynamic path in react router. id can be used the fetch the details with that particular id */}
-        <Route path ='/profile' element={<Profile/>}/>
+        <Route path ='/profile/:id' element={<Profile/>}/>
         <Route path='/desc/:id' element={<ProjectDescriptionPage/>}></Route>
         <Route path='/postpage' element={<CreatePostPage/>}></Route>
         <Route path='/ResourceDesc/:id' element={<ResourceDescPage/>}></Route>
+        <Route path='/chat' element={<ChatPage/>}></Route>
       </Routes>
     </div>
   );
