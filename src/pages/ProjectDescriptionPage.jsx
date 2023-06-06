@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { AiOutlinePlus} from "react-icons/ai";
+import { AiOutlinePlus } from "react-icons/ai";
 import '../assets/css/ProjectPage.css'
 import { useParams } from 'react-router-dom';
 import { db } from '../firebase';
@@ -10,6 +10,8 @@ const ProjectDescriptionPage = () => {
     const [openmodal, setopenmodal] = useState(false);
     const [Data, setData] = useState([]);
     const [Technologies, setTechnologies] = useState([]);
+    const [createdAt, setcreatedAt] = useState("");
+
     // used to access the paramenters associated with the id
     const { id } = useParams();
 
@@ -31,7 +33,7 @@ const ProjectDescriptionPage = () => {
 
     useEffect(() => {
         onValue(ref(db, `Contributors/${id}`), (snapshot) => {
-            console.log("project id: " , id);
+            console.log("project id: ", id);
             const data = snapshot.val();
             console.log(data);
         });
@@ -39,18 +41,15 @@ const ProjectDescriptionPage = () => {
 
     return (
         <div>
-            <ApplicationFormModal openmodal={openmodal} setopenmodal={setopenmodal} projid={id}/>
+            <ApplicationFormModal openmodal={openmodal} setopenmodal={setopenmodal} projid={id} />
             <div className="projecthero">
                 <div className="projectheading">
                     <div className="header">
-                        <span id='projspan1'>{Data.projname}<br/></span>
-                        <span id='projspan2'>a few seconds ago<br/></span>
-                        <div className='open'>open</div>
-                        <div className="close">closed</div>
+                        <span id='projspan1'>{Data.projname}<br /></span>
+                        <span id='projspan2'>1 day ago<br /></span>
                     </div>
                     <div className='headerright'>
-                        <button className='addbtn' onClick={() => {setopenmodal(!openmodal);}}><AiOutlinePlus />Contribute</button>
-                        <span>Contributors: 15</span>
+                        <button className='addbtn' onClick={() => { setopenmodal(!openmodal); }}><AiOutlinePlus />Contribute</button>
                     </div>
                 </div>
                 <div className="projectTechnologiesContainer">

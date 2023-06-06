@@ -5,6 +5,7 @@ import { ref, set, serverTimestamp, onValue} from "firebase/database";
 import { db } from "../firebase";
 import {useNavigate} from "react-router-dom";
 import Swal from "sweetalert2";
+import { AiOutlineClose } from 'react-icons/ai';
 
 const CreatePostPage = () => {
 
@@ -24,6 +25,8 @@ const CreatePostPage = () => {
     const [projproblem, setprojproblem] = useState("");
     const [link, setlink] = useState("");
     const [Email, setEmail] = useState("");
+
+    const userId = localStorage.getItem("suprUserId");
     
     //NOTE: trim() method is used to remove whitespaces from the text
     //The ... is known as the spread operator in JavaScript. In the context of [...technologies, trimmedInput], it is used to create a new array by spreading the elements of the existing technologies array and then adding the trimmedInput value at the end.
@@ -50,6 +53,10 @@ const CreatePostPage = () => {
                 Email: Email,
                 timestamp: serverTimestamp(),
             })
+            set(ref(db, `myProjects/${userId}/${uniqueId}`), {
+                projid: uniqueId,
+                projname: projname,
+            })
             navigate('/projects');
         } catch (error) {
             console.log(error);
@@ -63,14 +70,18 @@ const CreatePostPage = () => {
         });
     }
 
-    const userId = localStorage.getItem("suprUserId");
-
     useEffect(() => {
         onValue(ref(db, `Users/${userId}`), (snapshot) => {
             const data = snapshot.val();
             setEmail(data.email);
         });
     }, []);
+
+    const removeTechnology = (index) => {
+        const updatedTechnologies = [...technologies];
+        updatedTechnologies.splice(index, 1);
+        setTechnologies(updatedTechnologies);
+    };
 
     return (
         <div>
@@ -91,14 +102,18 @@ const CreatePostPage = () => {
                     <span id='projsubheading'>Technologies Used</span>
                     <div className='technologiesdesc'>
                         {/* traverse the array and display the content */}
-                        {technologies.map((technology) => (
-                            <span>{technology}</span>
+                        {technologies.map((technology, index) => (
+                            <div className='technologiesdescspan' key={index}>
+                            <span>{technology}<AiOutlineClose onClick={() => removeTechnology(index)} /></span>
+                            {/* <button onClick={() => removeTechnology(index)}>Delete</button> */}
+                            </div>    
                         ))}
                         <input
                             type="text"
                             value={technologyInput}
                             onChange={(e) => setTechnologyInput(e.target.value)}
                             placeholder="Enter technology"
+                            className='technologiesInput'
                         />
                         <button onClick={addTechnology}>Add more</button>
                     </div>
