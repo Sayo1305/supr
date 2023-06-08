@@ -69,7 +69,8 @@ const Navbar = () => {
     //   </div>
     
     <>
-      {pathname.includes("login") || pathname.includes("Signup") || pathname.includes("profile") ? (
+      {/* {pathname.includes("login") || pathname.includes("Signup") || pathname.includes("profile") ? ( */}
+      {pathname.includes("login") || pathname.includes("Signup") ? (
         <div style={{ display: "hidden" }}></div>
       ) : (
         <div className="navbar">
