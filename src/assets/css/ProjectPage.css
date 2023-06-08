@@ -68,6 +68,43 @@
     height: 20vh;
 }
 
+.postedby img{
+    width: 20%;
+    height: 20%;
+}
+
+.postedby{
+    display: flex;
+    padding-bottom: 5%;
+}
+.postedbytext{
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5;
+    padding-left: 10px;
+}
+
+#postedbyusername{
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+
+.oldpostedby{
+    display: flex;
+}
+
+.oldpostedby img{
+    height: 5%;
+    width: 5%;
+}
+
+.oldpostedbytext{
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5;
+    padding-left: 10px;
+}
+
 .cardcontent{
     display: flex;
     flex-direction: column;
@@ -147,7 +184,8 @@
 .allcard{
     margin-bottom: 2%;
     width: 90%;
-    height: 30vh;
+    min-height: 30vh;
+    height: auto;
     border-radius: 15px;
     background-color: #1e2f62;
     /* border: 2px solid white; */
@@ -381,3 +419,4 @@
     padding : 2%;
     border-radius: 20px;
 }
+

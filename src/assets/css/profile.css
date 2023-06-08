@@ -114,3 +114,25 @@
   height: 30%;
   color: weight;
 }
+
+.emptyprojectcontainer{
+    width: 100%;
+    margin-top: 3%;
+    height: 20vh;
+    color: grey;
+    border: 1px solid grey;
+    border-radius: 20px;
+}
+
+.profilelinks{
+    width: 100%;
+    display: flex;
+    color: #fff;
+    font-size: 2.3rem;
+    justify-content: center;
+    margin-left: 50px;
+}
+
+.profilelinks div{
+    margin: 20px;
+}

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import '../assets/css/ProjectPage.css'
 import { uid } from "uid";
-import { ref, set, serverTimestamp, onValue} from "firebase/database";
+import { ref, set, serverTimestamp, onValue } from "firebase/database";
 import { db } from "../firebase";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AiOutlineClose } from 'react-icons/ai';
 
@@ -15,7 +15,7 @@ const CreatePostPage = () => {
         showConfirmButton: false,
         timer: 2000,
         timerProgressBar: true,
-      });
+    });
 
     const navigate = useNavigate();
     const [technologyInput, setTechnologyInput] = useState('');
@@ -25,9 +25,11 @@ const CreatePostPage = () => {
     const [projproblem, setprojproblem] = useState("");
     const [link, setlink] = useState("");
     const [Email, setEmail] = useState("");
+    const [username, setusername] = useState("");
+    const [gender, setgender] = useState("");
 
     const userId = localStorage.getItem("suprUserId");
-    
+
     //NOTE: trim() method is used to remove whitespaces from the text
     //The ... is known as the spread operator in JavaScript. In the context of [...technologies, trimmedInput], it is used to create a new array by spreading the elements of the existing technologies array and then adding the trimmedInput value at the end.
     //For example, let's say the initial technologies array is ['HTML', 'CSS'], and trimmedInput is 'JavaScript'. The expression [...technologies, trimmedInput] will create a new array ['HTML', 'CSS', 'JavaScript'], combining the existing technologies with the new technology.
@@ -40,22 +42,45 @@ const CreatePostPage = () => {
         }
     };
 
+    useEffect(() => {
+        onValue(ref(db, `Users/${userId}`), (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+                const dataKeys = Object.keys(data);
+                let arr = [];
+                for (let i = 0; i < dataKeys.length; i++) {
+                    arr.push(data[dataKeys[i]]);
+                }
+                if (arr[1] === "Male") {
+                    setgender("Male");
+                } else {
+                    setgender("Female");
+                }
+                setusername(data.name);
+            }
+        });
+    }, [userId]);
+
     const handle_submit = () => {
         try {
             const uniqueId = uid(16);
             set(ref(db, `ProjectPosts/${uniqueId}`), {
                 id: uniqueId,
+                userID: userId,
                 projname: projname,
                 technologies: technologies,
                 projdesc: projdesc,
                 projproblem: projproblem,
                 link: link,
                 Email: Email,
+                username: username,
+                gender: gender,
                 timestamp: serverTimestamp(),
             })
             set(ref(db, `myProjects/${userId}/${uniqueId}`), {
                 projid: uniqueId,
                 projname: projname,
+                projdesc: projdesc,
             })
             navigate('/projects');
         } catch (error) {
@@ -95,7 +120,7 @@ const CreatePostPage = () => {
                 <div className="probstmtcontainer">
                     <span id='projsubheading'>Project Name</span>
                     <div className='postbox'>
-                        <textarea name="message" placeholder="Enter Project Name" onChange={(e) => {setprojname(e.target.value)}}></textarea>
+                        <textarea name="message" placeholder="Enter Project Name" onChange={(e) => { setprojname(e.target.value) }}></textarea>
                     </div>
                 </div>
                 <div className="projectTechnologiesContainer">
@@ -104,9 +129,9 @@ const CreatePostPage = () => {
                         {/* traverse the array and display the content */}
                         {technologies.map((technology, index) => (
                             <div className='technologiesdescspan' key={index}>
-                            <span>{technology}<AiOutlineClose onClick={() => removeTechnology(index)} /></span>
-                            {/* <button onClick={() => removeTechnology(index)}>Delete</button> */}
-                            </div>    
+                                <span>{technology}<AiOutlineClose onClick={() => removeTechnology(index)} /></span>
+                                {/* <button onClick={() => removeTechnology(index)}>Delete</button> */}
+                            </div>
                         ))}
                         <input
                             type="text"
@@ -121,30 +146,30 @@ const CreatePostPage = () => {
                 <div className="projectDescContainer">
                     <span id='projsubheading'>Project Description</span>
                     <div className='postbox'>
-                        <textarea name="message" placeholder="Give brief description of the project..." onChange={(e) => {setprojdesc(e.target.value)}}></textarea>
+                        <textarea name="message" placeholder="Give brief description of the project..." onChange={(e) => { setprojdesc(e.target.value) }}></textarea>
                     </div>
                 </div>
                 <div className="probstmtcontainer">
                     <span id='projsubheading'>Problem statement</span>
                     <div className='postbox'>
-                        <textarea name="message" placeholder="Enter the problem statement..." onChange={(e) => {setprojproblem(e.target.value)}}></textarea>
+                        <textarea name="message" placeholder="Enter the problem statement..." onChange={(e) => { setprojproblem(e.target.value) }}></textarea>
                     </div>
                 </div>
                 <div className="githubLinkContainer postlink">
                     <span id='projsubheading'>Github Project Link</span>
                     <div className='postlinkbox'>
-                        <textarea name="message" placeholder="Enter Github link of the project..." onChange={(e) => {setlink(e.target.value)}}></textarea>
+                        <textarea name="message" placeholder="Enter Github link of the project..." onChange={(e) => { setlink(e.target.value) }}></textarea>
                     </div>
                 </div>
                 {projname && projdesc && projproblem && link && (
                     <div><button className='publishbtn' onClick={handle_submit}>publish</button></div>
                 )}
-                 {!projname && !projdesc && !projproblem && !link && (
+                {!projname && !projdesc && !projproblem && !link && (
                     <div>
-                        <button className='publishbtn' onClick={handle_emptyformsubmit}>publish</button>   
+                        <button className='publishbtn' onClick={handle_emptyformsubmit}>publish</button>
                     </div>
                 )}
-                
+
             </div>
         </div>
     )
