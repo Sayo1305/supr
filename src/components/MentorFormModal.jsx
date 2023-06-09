@@ -1,24 +1,29 @@
 import { onValue, ref, set } from "firebase/database";
+import { getStorage, ref as refst, uploadBytes } from "firebase/storage";
 import React, { useEffect, useState } from "react";
 import Modal from "react-awesome-modal";
 import Swal from "sweetalert2";
-import { db } from "../firebase";
+import { app, db } from "../firebase";
 import { uid } from "uid";
 const MentorFormModal = ({ openmodal, setopenmodal }) => {
+  const storage = getStorage(app);
   const [headline, setheadline] = useState("");
   const [github, setgithub] = useState("");
   const [twiter, settwiter] = useState("");
   const [linkedin, setlinkedin] = useState("");
   const [imageurl, setimageurl] = useState("");
+  const [hiddenName , sethiddenname] = useState(""); 
+  const [openname , setopenname ] = useState(false);
   useEffect(() => {
     setheadline("");
     setimageurl("");
     setlinkedin("");
     settwiter("");
     setgithub("");
+    sethiddenname("");
   }, [openmodal]);
 
-  const wrtitetodb = () => {
+  const wrtitetodb = async() => {
     const userId = localStorage.getItem("suprUserId");
     const unqiueId = uid(15);
     let arr = [];
@@ -31,13 +36,29 @@ const MentorFormModal = ({ openmodal, setopenmodal }) => {
         }
       }
     });
-    set(ref(db, `Mentors/${unqiueId}`), {
-      id: unqiueId,
-      name: arr[3],
-      headline: headline,
-      github: github,
-      linkedin: linkedin,
-      twiter: twiter,
+    if(openname === true){
+      set(ref(db, `Mentors/${unqiueId}`), {
+        id: unqiueId,
+        name: hiddenName,
+        headline: headline,
+        github: github,
+        linkedin: linkedin,
+        twiter: twiter,
+      });
+    }else{
+      set(ref(db, `Mentors/${unqiueId}`), {
+        id: unqiueId,
+        name: arr[3],
+        headline: headline,
+        github: github,
+        linkedin: linkedin,
+        twiter: twiter,
+      });
+    }
+    // upload code to push to firebase
+    const imageRef = refst(storage, `images/Mentors/${unqiueId}/0`); // path where to store
+    await uploadBytes(imageRef , imageurl).then((snapshot) => { // imageurl is the source of the snapshot
+      // console.log(snapshot)
     });
     setopenmodal(!openmodal);
   };
@@ -84,6 +105,22 @@ const MentorFormModal = ({ openmodal, setopenmodal }) => {
             </div>
           )}
         </div>
+        <div className="HiddenNameInput">
+        <div onClick={()=>{setopenname(!openname)}} className={`${openname === true ?  "SelectBoxMentorModalNot" : "SelectBoxMentorModal"}`}></div>
+        <div>Select a Annonymous Name</div>
+        </div>
+        {
+          openname === true && <div className="MentorModalInputCont">
+          <input
+            onChange={(e) => {
+              sethiddenname(e.target.value);
+            }}
+            className="MentorModalInput"
+            type="text"
+            placeholder="Enter The Name you Want to show"
+          />
+        </div>
+        }
         <div className="MentorModalInputCont">
           <input
             onChange={(e) => {
