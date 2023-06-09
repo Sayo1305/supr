@@ -122,6 +122,7 @@ const Profile = () => {
   const handle_logout = ()=>{
     navigate('/')
     localStorage.removeItem("suprUserId");
+    localStorage.removeItem('suprType');
   }
 
 
