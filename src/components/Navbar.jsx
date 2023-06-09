@@ -13,6 +13,7 @@ const Navbar = () => {
   const location = useLocation();
   const [pathname, setPathname] = useState(location.pathname);
   const [chooseimage, setchooseimage] = useState(false);
+  const [username, setusername] = useState('');
   const handle_logout = ()=>{
     setuser([]);
     localStorage.removeItem("suprUserId");
@@ -25,6 +26,7 @@ const Navbar = () => {
     onValue(ref(db, `Users/${userId}`), (snapshot) => {
       const data = snapshot.val();
       if (data) {
+        setusername(data.name);
         const dataKeys = Object.keys(data);
         let arr = [];
         for (let i = 0; i < dataKeys.length; i++) {
@@ -33,7 +35,7 @@ const Navbar = () => {
         if (arr[1] === "Male") {
           setchooseimage(true);
         }
-        setuser(arr);
+        setuser(arr);  
       }
     });
   }, [userId]);
@@ -126,7 +128,7 @@ const Navbar = () => {
             )}
             {userId && (
               <>
-                <div className="NavbarProfileText">Hi!! {user[3]}</div>
+                <div className="NavbarProfileText">Hi!! {username}</div>
                 {chooseimage === false ? (
                   <img
                   onClick={()=>{navigate(`/profile/${userId}`)}}
