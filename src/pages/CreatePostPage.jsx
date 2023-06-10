@@ -16,7 +16,6 @@ const CreatePostPage = () => {
         timer: 2000,
         timerProgressBar: true,
     });
-
     const navigate = useNavigate();
     const [technologyInput, setTechnologyInput] = useState('');
     const [technologies, setTechnologies] = useState([]);
