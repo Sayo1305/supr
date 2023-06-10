@@ -6,6 +6,8 @@ import { MdOutlinePeopleOutline } from "react-icons/md"
 import { useNavigate } from "react-router-dom";
 import { onValue, ref } from "firebase/database";
 import { db } from "../firebase";
+import womanprofile from '../assets/images/woman.png'
+import manprofile from '../assets/images/man.png'
 
 const ProjectPage = () => {
     const navigate = useNavigate();
@@ -45,8 +47,31 @@ const ProjectPage = () => {
                     <div className="cardscontainer">
                         {recentposts.map((item) => (
                             <div className="projectcard">
-                                <img src={card4} alt="image" />
                                 <div className="cardcontent">
+                                    <div className="postedby">
+                                        {item.gender === "Female" ? (
+                                            <img
+                                                onClick={() => { navigate(`/profile/${item.userID}`) }}
+                                                className="ProjectProfile"
+                                                src={womanprofile}
+                                                alt="profile"
+                                            />
+                                        ) : (
+                                            <img
+                                                onClick={() => { navigate(`/profile/${item.userID}`) }}
+                                                className="ProjectProfile"
+                                                src={manprofile}
+                                                alt="profile"
+                                            />
+                                        )}
+
+                                        <div className="postedbytext">
+                                            <span id='postedbyusername'>{item.username}</span>
+                                            <span>posted 3 days ago</span>
+                                        </div>
+
+                                    </div>
+
                                     <span id='cardspan1'>{item.projname}</span>
                                     <div className='technologies'>
                                         {item.technologies.map((tech) => (
@@ -67,6 +92,28 @@ const ProjectPage = () => {
                     {oldposts.map((item) => (
                         <div className="allcard" key={item.id}>
                             <div className="cardcontent cardcontentdark">
+                                <div className="oldpostedby">
+                                    {item.gender === "Female" ? (
+                                        <img
+                                            onClick={() => { navigate(`/profile/${item.userID}`) }}
+                                            className="ProjectProfile"
+                                            src={womanprofile}
+                                            alt="profile"
+                                        />
+                                    ) : (
+                                        <img
+                                            onClick={() => { navigate(`/profile/${item.userID}`) }}
+                                            className="ProjectProfile"
+                                            src={manprofile}
+                                            alt="profile"
+                                        />
+                                    )}
+                                    <div className="oldpostedbytext">
+                                        <span id='postedbyusername'>Jane Doe</span>
+                                        <span>posted 3 days ago</span>
+                                    </div>
+
+                                </div>
                                 <span id='cardspan1'>{item.projname}</span>
 
                                 <div className='technologies technologiesdark'>
@@ -74,7 +121,7 @@ const ProjectPage = () => {
                                         <span>{tech}</span>
                                     ))}
                                 </div>
-                                <p id='cardspan3'>{item.projdesc.slice(0,150)}...</p>
+                                <p id='cardspan3'>{item.projdesc.slice(0, 150)}...</p>
                                 <div className='viewers viewersdark'>
                                     <button id='contributebtndark' className='btndark' onClick={() => { navigate(`/desc/${item.id}`) }}>Learn more!</button>
                                     <span id='people'><MdOutlinePeopleOutline size={30} /></span>

@@ -13,18 +13,17 @@ const Navbar = () => {
   const location = useLocation();
   const [pathname, setPathname] = useState(location.pathname);
   const [chooseimage, setchooseimage] = useState(false);
-  const handle_logout = ()=>{
-    setuser([]);
-    localStorage.removeItem("suprUserId");
-  }
+  const [username, setusername] = useState("");
+  const [opennotice , setopennotice] = useState("");
   useEffect(() => {
     setPathname(location.pathname);
   }, [location]);
   useEffect(() => {
-    console.log("Successfully")
+    console.log("Successfully");
     onValue(ref(db, `Users/${userId}`), (snapshot) => {
       const data = snapshot.val();
       if (data) {
+        setusername(data.name);
         const dataKeys = Object.keys(data);
         let arr = [];
         for (let i = 0; i < dataKeys.length; i++) {
@@ -67,9 +66,10 @@ const Navbar = () => {
     //         navigate('/Signup')
     //       }} className="btn">Signup</button>
     //   </div>
-    
+
     <>
-      {pathname.includes("login") || pathname.includes("Signup") || pathname.includes("profile") ? (
+      {/* {pathname.includes("login") || pathname.includes("Signup") || pathname.includes("profile") ? ( */}
+      {pathname.includes("login") || pathname.includes("Signup") ? (
         <div style={{ display: "hidden" }}></div>
       ) : (
         <div className="navbar">
@@ -83,9 +83,13 @@ const Navbar = () => {
             />
             <ul>
               <div className="navbar-features">
-                <li onClick={()=>{
-                  navigate('/Mentors');
-                }}>1:1 session</li>
+                <li
+                  onClick={() => {
+                    navigate("/Mentors");
+                  }}
+                >
+                  1:1 session
+                </li>
                 <li
                   onClick={() => {
                     navigate("/Resources");
@@ -125,18 +129,58 @@ const Navbar = () => {
             )}
             {userId && (
               <>
-                <div className="NavbarProfileText">Hi!! {user[3]}</div>
+                <div className="NavbarProfileText">Hi!! {username}</div>
                 {chooseimage === false ? (
                   <img
-                  onClick={()=>{navigate(`/profile/${userId}`)}}
+                    onClick={() => {
+                      navigate(`/profile/${userId}`);
+                    }}
                     className="NavbarProfile"
                     src={womanprofile}
                     alt="profile"
                   />
                 ) : (
-                  <img onClick={()=>{navigate(`/profile/${userId}`);}} className="NavbarProfile" src={BG} alt="profile" />
+                  <img
+                    onClick={() => {
+                      navigate(`/profile/${userId}`);
+                    }}
+                    className="NavbarProfile"
+                    src={BG}
+                    alt="profile"
+                  />
                 )}
-                <div onClick={handle_logout} className="NavbarLogoutButton">Logout</div>
+                <div className="NavbarNotification" onClick={()=>{setopennotice(!opennotice)}}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="25"
+                    height="25"
+                    fill="#fff"
+                    class="bi bi-bell-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
+                  </svg>
+                  <div className="NotificationRed"></div>
+                </div>
+                {
+                  opennotice === true && 
+                  <div className="NotificationBody">
+                    <div className="Notificationcont">Notification</div>
+                    <hr></hr>
+                    <div className="NotificationDiv">
+                      <div>Ho Gya arrey sahi hai .. </div>
+                      <div>Appka Notification aya hai </div>
+                      <div>Ho Gya arrey sahi hai .. </div>
+                      <div>Appka Notification aya hai </div>
+                      <div>Ho Gya arrey sahi hai .. </div>
+                      <div>Appka Notification aya hai </div>
+                    </div>
+                    <div className="NotificationShow">
+                      <div className="NotificationShowMore">Show More....</div>
+                    </div>
+                  </div>
+                }
+                {/* <div onClick={handle_logout} className="NavbarLogoutButton">Logout</div> */}
               </>
             )}
           </div>

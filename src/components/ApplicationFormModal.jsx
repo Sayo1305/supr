@@ -17,6 +17,8 @@ const ApplicationFormModal = ({ openmodal, setopenmodal, projid }) => {
     const [linkedinlink, setlinkedinlink] = useState("");
     const [githublink, setgithublink] = useState("");
     const [projname, setprojname] = useState("");
+    const [projectid, setprojectid] = useState("");
+    const [projdesc, setprojdesc] = useState("");
 
     const Toast = Swal.mixin({
         toast: true,
@@ -44,6 +46,8 @@ const ApplicationFormModal = ({ openmodal, setopenmodal, projid }) => {
             console.log("hello" + data.Email);
             settoEmail(data.Email);
             setprojname(data.projname);
+            setprojectid(data.id);
+            setprojdesc(data.projdesc);
         });
     }, []);
 
@@ -91,10 +95,10 @@ const ApplicationFormModal = ({ openmodal, setopenmodal, projid }) => {
             contributerName: fromname,
             projname: projname,
             contributerEmail: fromEmail,
-            status: "pending",
+            projid: projectid,
+            projdesc: projdesc,
             timestamp: serverTimestamp(),
         })
-
         navigate(`/profile/${userId}`);
     }
     return (
