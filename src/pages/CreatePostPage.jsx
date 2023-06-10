@@ -62,6 +62,20 @@ const CreatePostPage = () => {
     }, [userId]);
 
     const handle_submit = () => {
+        const timestamp = serverTimestamp();
+        const date = new Date();
+
+        console.log(date.toLocaleDateString());
+
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+
+        console.log(year);
+
+        const formattedDate = `${year}-${month < 10 ? '0' : ''}${month}-${day < 10 ? '0' : ''}${day}`;
+        console.log(formattedDate);
+
         try {
             const uniqueId = uid(16);
             set(ref(db, `ProjectPosts/${uniqueId}`), {
@@ -76,6 +90,7 @@ const CreatePostPage = () => {
                 username: username,
                 gender: gender,
                 timestamp: serverTimestamp(),
+                createdAt: formattedDate,
             })
             set(ref(db, `myProjects/${userId}/${uniqueId}`), {
                 projid: uniqueId,

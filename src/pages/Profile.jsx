@@ -74,7 +74,7 @@ const Profile = () => {
         setMyprojects(null);
       }
     });
-  }, []);
+  }, [currUserId,id]);
 
   const handleDeleteApplication = (item) => {
     Swal.fire({

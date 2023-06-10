@@ -13,7 +13,6 @@ const ProjectPage = () => {
     const navigate = useNavigate();
     const [oldposts, setoldposts] = useState([]);
     const [recentposts, setrecentposts] = useState([]);
-    const currdate = new Date();
 
 
     useEffect(() => {
@@ -46,6 +45,7 @@ const ProjectPage = () => {
                     <span id='postheading'>Recent Posts</span>
                     <div className="cardscontainer">
                         {recentposts.map((item) => (
+                            <div className='projectcardouter'>
                             <div className="projectcard">
                                 <div className="cardcontent">
                                     <div className="postedby">
@@ -67,7 +67,7 @@ const ProjectPage = () => {
 
                                         <div className="postedbytext">
                                             <span id='postedbyusername'>{item.username}</span>
-                                            <span>posted 3 days ago</span>
+                                            <span>{item.createdAt}</span>
                                         </div>
 
                                     </div>
@@ -78,12 +78,13 @@ const ProjectPage = () => {
                                             <span>{tech}</span>
                                         ))}
                                     </div>
-                                    <p id='cardspan3'>{item.projdesc.slice(0, 100)}...</p>
+                                    <p id='cardspan3'>{item.projdesc.slice(0, 215)}...</p>
                                     <div className='viewers'>
                                         <button id='contributebtn' onClick={() => { navigate(`/desc/${item.id}`) }}>Learn more!</button>
                                         <span id='people'><MdOutlinePeopleOutline size={30} /></span>
                                     </div>
                                 </div>
+                            </div>
                             </div>
                         ))}
                     </div>

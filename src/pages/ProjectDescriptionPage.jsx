@@ -46,7 +46,7 @@ const ProjectDescriptionPage = () => {
                 <div className="projectheading">
                     <div className="header">
                         <span id='projspan1'>{Data.projname}<br /></span>
-                        <span id='projspan2'>1 day ago<br /></span>
+                        <span id='projspan2'>{Data.createdAt}<br /></span>
                     </div>
                     <div className='headerright'>
                         <button className='addbtn' onClick={() => { setopenmodal(!openmodal); }}><AiOutlinePlus />Contribute</button>
