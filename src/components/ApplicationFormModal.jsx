@@ -7,6 +7,7 @@ import { onValue, ref, set, serverTimestamp } from 'firebase/database';
 import { db } from '../firebase';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import { uid } from 'uid';
 
 const ApplicationFormModal = ({ openmodal, setopenmodal, projid }) => {
     const navigate = useNavigate();
@@ -54,7 +55,8 @@ const ApplicationFormModal = ({ openmodal, setopenmodal, projid }) => {
     const form = useRef();
 
     const sendEmail = (e) => {
-        // e.preventDefault();
+        e.preventDefault();
+        const unqiueId = uid(15);
 
         // var templateParams = {
         //     from_name: fromname,
@@ -89,7 +91,15 @@ const ApplicationFormModal = ({ openmodal, setopenmodal, projid }) => {
             contributerEmail: fromEmail,
             timestamp: serverTimestamp(),
         })
-        
+        set(ref(db , `Notifications/${unqiueId}`) , {
+            userId : userId ,
+            id : unqiueId ,
+            type : 'Notification',
+            text : `You have Applied To the Project ${projname}, wait till your application is confirmed`,
+            status : 'pending',
+            subtype : 'project',
+            date : new Date().getDate(),
+        })
         //in this database we have users and the projects they have applied to
         set(ref(db, `MyApplications/${userId}/${projid}`), {
             contributerName: fromname,

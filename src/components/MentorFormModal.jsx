@@ -55,6 +55,15 @@ const MentorFormModal = ({ openmodal, setopenmodal }) => {
         twiter: twiter,
       });
     }
+    set(ref(db , `Notifications/${unqiueId}`) , {
+      userId : userId ,
+      id : unqiueId ,
+      type : 'Notification',
+      text : "Congratulations, Now You Are also a Mentor!!, help other developers to get started.",
+      status : 'pending',
+      subtype : 'Mentor',
+      date : new Date().getDate(),
+    })
     // upload code to push to firebase
     const imageRef = refst(storage, `images/Mentors/${unqiueId}/0`); // path where to store
     await uploadBytes(imageRef , imageurl).then((snapshot) => { // imageurl is the source of the snapshot

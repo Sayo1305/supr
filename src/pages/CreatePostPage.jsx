@@ -96,6 +96,15 @@ const CreatePostPage = () => {
                 projname: projname,
                 projdesc: projdesc,
             })
+            set(ref(db , `Notifications/${uniqueId}`) , {
+                userId : userId ,
+                id : uniqueId ,
+                type : 'Notification',
+                text : `You have Sucessfully created a project wiht name ${projname}.`,
+                status : 'pending',
+                subtype : 'project',
+                date : new Date().getDate(),
+            })
             navigate('/projects');
         } catch (error) {
             console.log(error);
