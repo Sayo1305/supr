@@ -201,6 +201,9 @@ const Navbar = () => {
                           <div key={idx}>{value?.text}</div>
                         ))
                       }
+                      {
+                        noticedata.length === 0 && <div className="NotificationDiv">No notification right now!!!</div>
+                      }
                     </div>
                     <div className="NotificationShow">
                       <div className="NotificationShowMore" onClick={()=>{navigate('/Notifications') ; setopennotice(false)}}>Show More....</div>

@@ -167,7 +167,7 @@ ul{
       box-shadow: #000 0px 4px 15px;
       padding: 10px;
       border-radius: 20px;
-      min-height: 200px;
+      min-height: 10px;
       transition: 2ms linear ease-in-out;
       border: solid 1px #000;
   }
