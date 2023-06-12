@@ -62,7 +62,13 @@ ul{
 
   .navbar img{
       width: 60px;
+
   }
+
+  .navbar img:hover{
+    cursor: pointer;
+  }
+
   .NavbarProfile{
       width: 50px !important;
   }

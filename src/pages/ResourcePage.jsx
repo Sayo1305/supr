@@ -26,11 +26,11 @@ const ResourcePage = () => {
           <input type="search" placeholder='Search Courses' />
           <button ><img src={searchPic} alt="" /></button>
         </div>
-        <div className="ResourceAdd">
+        {/* <div className="ResourceAdd">
           <button onClick={() =>{
             setopenmodal(!openmodal);
           }} > <GrAdd/> Add Resources</button>
-        </div>
+        </div> */}
       </div>
       <div className="ResourcePageAllCards">
         <div className="ResourcePageCard">
@@ -39,7 +39,7 @@ const ResourcePage = () => {
             <h1 className='ResourcePageTitle'>Learn React</h1>
             <p className='ResourcePageDescription'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ullam esse ut deserunt atque ipsum nemo, natus eligendi numquam aliquam?</p>
             <div className='buttondiv'>
-              <button onClick={()=>{navigate('/ResourceDesc/1')}} className='ResourcePagebutton'>See lecture</button>
+              <button onClick={()=>{navigate('/ResourceDesc/1')}} className='ResourcePagebutton'>See Resources</button>
             </div>
           </div>
         </div>
@@ -49,7 +49,7 @@ const ResourcePage = () => {
             <h1 className='ResourcePageTitle'>Learn React</h1>
             <p className='ResourcePageDescription'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ullam esse ut deserunt atque ipsum nemo, natus eligendi numquam aliquam?</p>
             <div className='buttondiv'>
-              <button className='ResourcePagebutton'>See lecture</button>
+              <button className='ResourcePagebutton'>See Resources</button>
             </div>
           </div>
         </div>
@@ -59,7 +59,7 @@ const ResourcePage = () => {
             <h1 className='ResourcePageTitle'>Learn React</h1>
             <p className='ResourcePageDescription'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ullam esse ut deserunt atque ipsum nemo, natus eligendi numquam aliquam?</p>
             <div className='buttondiv'>
-              <button className='ResourcePagebutton'>See lecture</button>
+              <button className='ResourcePagebutton'>See Resources</button>
             </div>
           </div>
         </div>
@@ -69,7 +69,7 @@ const ResourcePage = () => {
             <h1 className='ResourcePageTitle'>Learn React</h1>
             <p className='ResourcePageDescription'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ullam esse ut deserunt atque ipsum nemo, natus eligendi numquam aliquam?</p>
             <div className='buttondiv'>
-              <button className='ResourcePagebutton'>See lecture</button>
+              <button className='ResourcePagebutton'>See Resources</button>
             </div>
           </div>
         </div>
@@ -79,7 +79,7 @@ const ResourcePage = () => {
             <h1 className='ResourcePageTitle'>Learn React</h1>
             <p className='ResourcePageDescription'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ullam esse ut deserunt atque ipsum nemo, natus eligendi numquam aliquam?</p>
             <div className='buttondiv'>
-              <button className='ResourcePagebutton'>See lecture</button>
+              <button className='ResourcePagebutton'>See Resources</button>
             </div>
           </div>
         </div>
@@ -89,7 +89,7 @@ const ResourcePage = () => {
             <h1 className='ResourcePageTitle'>Learn React</h1>
             <p className='ResourcePageDescription'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ullam esse ut deserunt atque ipsum nemo, natus eligendi numquam aliquam?</p>
             <div className='buttondiv'>
-              <button className='ResourcePagebutton'>See lecture</button>
+              <button className='ResourcePagebutton'>See Resources</button>
             </div>
           </div>
         </div>
@@ -99,7 +99,7 @@ const ResourcePage = () => {
             <h1 className='ResourcePageTitle'>Learn React</h1>
             <p className='ResourcePageDescription'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ullam esse ut deserunt atque ipsum nemo, natus eligendi numquam aliquam?</p>
             <div className='buttondiv'>
-              <button className='ResourcePagebutton'>See lecture</button>
+              <button className='ResourcePagebutton'>See Resources</button>
             </div>
           </div>
         </div>
@@ -109,7 +109,7 @@ const ResourcePage = () => {
             <h1 className='ResourcePageTitle'>Learn React</h1>
             <p className='ResourcePageDescription'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ullam esse ut deserunt atque ipsum nemo, natus eligendi numquam aliquam?</p>
             <div className='buttondiv'>
-              <button className='ResourcePagebutton'>See lecture</button>
+              <button className='ResourcePagebutton'>See Resources</button>
             </div>
           </div>
         </div>

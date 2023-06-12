@@ -6,36 +6,91 @@
 
 .ResourcePageDesc_Conatiner{
     background: linear-gradient(to top , #151934 , #071226);
-    padding: 50px;
+    padding: 20px;
+}
+
+.ResDesc h1{
+    color: beige;
 }
 
 .ResDesc{
     text-align: center;
 }
 
-.ResDesc h1{
-    font-size: 400%;
-    color: bisque;
+
+.ResDesc img{
+    width: 20%;
 }
 
-.ResDesc p{
+.ResDescBar{
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ResDescBar li{
+    padding: 10px;
+    cursor: pointer;
     color: beige;
 }
 
-.ResDesc img{
-    width: 30%;
+.ResDescBar li.active{
+    border-bottom: 2px solid #333;
 }
 
-.ResDescButtons{
+.line {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: 33.33%;
+    background-color: #333;
+    transition: left 0.3s ease;
+}
+
+.ResourceOutContainer{
+    margin-top: 20px;
+}
+
+.content-item {
+    display: block;
     text-align: center;
 }
 
-.ResDescButtons button{
-    border: none;
-    background: linear-gradient(to top , #4388a3 , #25cf83);
-    border-radius: 10px;
-    color: rgb(0, 0, 0);
-    cursor: pointer;
-    margin: 50px;
+.addResourcesButton{
     padding: 20px;
+    background-color:rgb(183, 236, 183);
+    border-radius: 10px;
+    border: none;
+    color: #333;
+    font-size: 15px;
+    margin-top: 30px;
+}
+
+.addResourcesButton:hover{
+    cursor: pointer;
+    background-color:rgb(148, 207, 148);
+}
+
+.LecturesBlock{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.lecture-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+.LecturesBlock a {
+    color: #0066cc;
+    text-decoration: none; 
+    transition: color 0.3s; 
+}
+
+.LecturesBlock a:hover{
+    color: #f88030;
 }

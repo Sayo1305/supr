@@ -234,8 +234,7 @@ const Profile = () => {
             )}
           </div>
           <div className="myresources">
-
-
+            
           </div>
         </div>
 

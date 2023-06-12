@@ -1,19 +1,55 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../assets/css/ResourceDescPageCSS.css'
 import ReactPic from '../assets/images/react_img.png'
 
 const ResourceDescPage = () => {
+  const [selectedItem, setselectedItem] = useState('resourceLecture');
+
+  const handleClick = (resourceItem) => {
+    setselectedItem(resourceItem);
+  };
+
   return (
     <div className='ResourcePageDesc_Conatiner'>
       <div className="ResDesc">
         <h1>React Resources</h1>
         <img src={ReactPic} alt="" />
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto, necessitatibus incidunt! Facilis perspiciatis veniam maiores nobis doloremque laborum animi sapiente eligendi sunt! Esse nesciunt minus cupiditate aperiam vitae perferendis? Facere eligendi at incidunt ipsum sunt! Repellendus quia, beatae numquam earum in, laudantium deleniti vel dolor, quam atque nihil. Ad deserunt accusantium aliquid nulla, non debitis explicabo labore necessitatibus maxime culpa voluptates, perspiciatis dicta sed aperiam unde dolore? In numquam cumque reprehenderit cupiditate accusantium amet? Aliquid omnis maxime vitae et saepe ducimus fuga adipisci, itaque quia nulla ea in deserunt natus est quis culpa, impedit vero beatae dignissimos odio consequatur deleniti.</p>
+
       </div>
-      <div className="ResDescButtons">
-        <button>Lectures</button>
-        <button>Notes</button>
-        <button>Official Docs</button>
+      <ul className="ResDescBar">
+        <li className={selectedItem === 'resourceLecture' ? 'active' : ''} onClick={() => handleClick('resourceLecture')}
+        >
+          lectures
+        </li>
+        <li className={selectedItem === 'resourcePDF' ? 'active' : ''} onClick={() => handleClick('resourcePDF')}
+        >
+          PDFs
+        </li>
+        <li className={selectedItem === 'resourceDocs' ? 'active' : ''} onClick={() => handleClick('resourceDocs')}>
+          Official Docs
+        </li>
+      </ul>
+      <div className="ResourceOutContainer">
+        {selectedItem === 'resourceLecture' && <div className="content-item">
+          <div className="LecturesBlock">
+            <span className='lecture-icon'></span>
+            <a href="https://www.youtube.com/">Introduction</a> 
+            <span className='lecture-icon'></span>
+            <a href="https://www.youtube.com/">Beginner knowledge</a>
+            <span className='lecture-icon'></span>
+            <a href="https://www.youtube.com/">Intermediate knowledge</a>
+            <span className='lecture-icon'></span>
+            <a href="https://www.youtube.com/">Professional Knowledge</a>
+          </div>
+          <button className='addResourcesButton'>Add Lectures</button>
+        </div>}
+        {selectedItem === 'resourcePDF' && <div className="content-item">
+          
+          <button className='addResourcesButton'>Add PDF</button>
+        </div>}
+        {selectedItem === 'resourceDocs' && <div className="content-item">
+          <button className='addResourcesButton'>Add Docs</button>
+        </div>}
       </div>
     </div>
   )
