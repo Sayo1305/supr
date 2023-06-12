@@ -173,9 +173,9 @@ const CreatePostPage = () => {
                     </div>
                 </div>
                 <div className="probstmtcontainer">
-                    <span id='projsubheading'>Problem statement</span>
+                    <span id='projsubheading'>Describe the issue</span>
                     <div className='postbox'>
-                        <textarea name="message" placeholder="Enter the problem statement..." onChange={(e) => { setprojproblem(e.target.value) }}></textarea>
+                        <textarea name="message" placeholder="Provide a brief explanation or description of the specific problem or part of your project you need assistance with..." onChange={(e) => { setprojproblem(e.target.value) }}></textarea>
                     </div>
                 </div>
                 <div className="githubLinkContainer postlink">

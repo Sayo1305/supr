@@ -90,6 +90,9 @@ const Navbar = () => {
       ) : (
         <div className="navbar">
           <div className="navleft">
+          <div  onClick={() => {
+                navigate("/");
+              }} className="skillVerse">SkillVerse</div>
             <img
               onClick={() => {
                 navigate("/");
@@ -116,10 +119,14 @@ const Navbar = () => {
                 >
                   Resources
                 </li>
-                {/* <li>Contribution</li> */}
-                <Link to={"/projects"} onClick={()=>{setopennotice(false);}}>
-                  <li>Projects</li>
-                </Link>
+                <li>Contribution</li>
+                <li
+                  onClick={() => {
+                    navigate("/projects");
+                  }}
+                >
+                  Projects
+                </li>
               </div>
             </ul>
           </div>

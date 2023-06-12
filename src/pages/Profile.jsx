@@ -194,8 +194,8 @@ const Profile = () => {
               <div className="myprojectcontainer">
                 <div>
                   <div className="projname" onClick={() => (navigate(`../../desc/${item.projid}`))}>{item.projname}</div>
-                  <div className="projdesc">{item.projdesc}</div>
-                  <div className="createdat">1 day ago</div>
+                  <div className="projdesc">{item.projdesc.slice(0,160)}...</div>
+                  <div className="createdat"></div>
                 </div>
                 <>
                   {CanEdit === true ? (

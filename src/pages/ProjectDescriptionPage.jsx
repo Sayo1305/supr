@@ -67,7 +67,7 @@ const ProjectDescriptionPage = () => {
                     </div>
                 </div>
                 <div className="probstmtcontainer">
-                    <span id='projsubheading'>Problem statement</span>
+                    <span id='projsubheading'>Help Description</span>
                     <div className='descbox'>
                         <p>{Data.projproblem}</p>
                     </div>
