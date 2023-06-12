@@ -98,10 +98,10 @@ input{
     color: black;
     font-size: 15px;
 
-    &::placeholder{
+    /* &::placeholder{
         color: rgb(171, 168, 197);
         background-color: bisque;
-    }
+    } */
 }
 .chatImg{
     height: 30px;

@@ -12,6 +12,7 @@ import CreatePostPage from './pages/CreatePostPage';
 import Profile from './pages/Profile';
 import ResourceDescPage from './pages/ResourceDescPage';
 import ChatPage from './pages/ChatPage';
+import Notification from './pages/Notification';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path='/postpage' element={<CreatePostPage/>}></Route>
         <Route path='/ResourceDesc/:id' element={<ResourceDescPage/>}></Route>
         <Route path='/chat' element={<ChatPage/>}></Route>
+        <Route path='/Notifications' element={<Notification/>}></Route>
       </Routes>
     </div>
   );

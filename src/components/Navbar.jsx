@@ -80,6 +80,7 @@ const Navbar = () => {
             <img
               onClick={() => {
                 navigate("/");
+                setopennotice(false);
               }}
               src={logo}
               alt=""
@@ -89,6 +90,7 @@ const Navbar = () => {
                 <li
                   onClick={() => {
                     navigate("/Mentors");
+                    setopennotice(false);
                   }}
                 >
                   1:1 session
@@ -96,14 +98,12 @@ const Navbar = () => {
                 <li
                   onClick={() => {
                     navigate("/Resources");
+                    setopennotice(false);
                   }}
                 >
                   Resources
                 </li>
                 <li>Contribution</li>
-                {/* <Link to={"/projects"}>
-                  <li>Projects</li>
-                </Link> */}
                 <li
                   onClick={() => {
                     navigate("/projects");
@@ -144,6 +144,7 @@ const Navbar = () => {
                   <img
                     onClick={() => {
                       navigate(`/profile/${userId}`);
+                      setopennotice(false);
                     }}
                     className="NavbarProfile"
                     src={womanprofile}
@@ -153,6 +154,7 @@ const Navbar = () => {
                   <img
                     onClick={() => {
                       navigate(`/profile/${userId}`);
+                      setopennotice(false);
                     }}
                     className="NavbarProfile"
                     src={BG}
@@ -186,7 +188,7 @@ const Navbar = () => {
                       <div>Appka Notification aya hai </div>
                     </div>
                     <div className="NotificationShow">
-                      <div className="NotificationShowMore">Show More....</div>
+                      <div className="NotificationShowMore" onClick={()=>{navigate('/Notifications') ; setopennotice(false)}}>Show More....</div>
                     </div>
                   </div>
                 }
