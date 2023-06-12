@@ -19,11 +19,11 @@
       font-size: 1.1rem;
       border-radius: 10px;
       cursor: pointer;
-      background: #712ADB;
+      background: #F98A83;
       border: 1px solid #000;  
 }
 .NotificationHeaderActive{
-      background: #2FC9D7 !important;
+      background: #B944DC !important;
 }
 .NotificationPageHead{
       display: flex;
@@ -35,10 +35,24 @@
       width: 50%;
       position: relative;
       height: 90px;
+      color: #fff;
       padding: 15px;
       display: flex;
       gap: 10px;
-      justify-content: start;
+      justify-content: flex-start;
+      align-items: center;
+      border: 1px solid #000;
+      background: #364f9c;
+}
+.applicationsCardCont{
+      width: 50%;
+      color: #fff;
+      position: relative;
+      height: 90px;
+      padding: 15px;
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
       align-items: center;
       border: 1px solid #000;
       background: #364f9c
@@ -64,7 +78,9 @@
 .NotificationOption{
       position: absolute;
       top: 5px;
+      border-radius: 5px;
       cursor: pointer;
+      color: #000;
       background: #fff;
       right: 10px;
       width: 120px;
@@ -72,4 +88,27 @@
       height: auto;
       display: flex;
       flex-direction: column;
+}
+.statusContainer{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+}
+.stausApplication{
+      font-size: 1.2rem;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 10px;
+      padding: 5px 15px;
+      background: rgb(233, 98, 98);
+}
+
+.statusAccepted{
+      font-size: 1.2rem;
+      color: #000;
+      cursor: pointer;
+      border-radius: 10px;
+      padding: 5px 15px;
+      background: rgb(103, 233, 98);
 }

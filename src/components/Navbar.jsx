@@ -4,7 +4,7 @@ import { Navigate, useNavigate, Link, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 import BG from "../assets/images/man.png";
 import womanprofile from "../assets/images/woman.png";
-import { onValue, ref } from "firebase/database";
+import { equalTo, get, onValue, orderByChild, query, ref } from "firebase/database";
 import { db } from "../firebase";
 const Navbar = () => {
   // const [data, setdata] = useState("hello world");
@@ -15,11 +15,12 @@ const Navbar = () => {
   const [chooseimage, setchooseimage] = useState(false);
   const [username, setusername] = useState("");
   const [opennotice , setopennotice] = useState("");
+  const [noticedata , setnoticedata] = useState([]);
   useEffect(() => {
     setPathname(location.pathname);
   }, [location]);
   useEffect(() => {
-    console.log("Successfully");
+    // console.log("Successfully");
     onValue(ref(db, `Users/${userId}`), (snapshot) => {
       const data = snapshot.val();
       if (data) {
@@ -36,6 +37,21 @@ const Navbar = () => {
       }
     });
   }, [userId]);
+  useEffect(()=>{
+    let arr =[];
+    const dataq = query(ref(db , "Notifications") , orderByChild("userId") , equalTo(userId));
+    get(dataq).then((snapshot)=>{
+      const data = snapshot.val();
+      const datakey = Object.keys(data);
+      for(let i = 0; i < datakey.length;i++)
+      {
+        arr.push(data[datakey[i]]);
+      }
+      // console.log(arr)
+      setnoticedata(arr);
+      // console.log("hello" , snapshot.val())
+    })
+  },[userId]);
   const navigate = useNavigate();
   const Toast = Swal.mixin({
     toast: true,
@@ -173,12 +189,11 @@ const Navbar = () => {
                     <div className="Notificationcont">Notification</div>
                     <hr></hr>
                     <div className="NotificationDiv">
-                      <div>Ho Gya arrey sahi hai .. </div>
-                      <div>Appka Notification aya hai </div>
-                      <div>Ho Gya arrey sahi hai .. </div>
-                      <div>Appka Notification aya hai </div>
-                      <div>Ho Gya arrey sahi hai .. </div>
-                      <div>Appka Notification aya hai </div>
+                      {
+                        noticedata.map((value , idx)=>(
+                          <div key={idx}>{value?.text}</div>
+                        ))
+                      }
                     </div>
                     <div className="NotificationShow">
                       <div className="NotificationShowMore" onClick={()=>{navigate('/Notifications') ; setopennotice(false)}}>Show More....</div>
