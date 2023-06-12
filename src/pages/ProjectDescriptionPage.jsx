@@ -41,7 +41,7 @@ const ProjectDescriptionPage = () => {
 
     return (
         <div>
-            <ApplicationFormModal openmodal={openmodal} setopenmodal={setopenmodal} projid={id} />
+            <ApplicationFormModal openmodal={openmodal} setopenmodal={setopenmodal} projid={id} ownerId= {Data?.userID} />
             <div className="projecthero">
                 <div className="projectheading">
                     <div className="header">

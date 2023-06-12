@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import { uid } from 'uid';
 
-const ApplicationFormModal = ({ openmodal, setopenmodal, projid }) => {
+const ApplicationFormModal = ({ openmodal, setopenmodal, projid , ownerId }) => {
     const navigate = useNavigate();
     const [fromname, setfromname] = useState(null);
     const [fromEmail, setfromEmail] = useState(null);
@@ -30,8 +30,8 @@ const ApplicationFormModal = ({ openmodal, setopenmodal, projid }) => {
       });
 
     const userId = localStorage.getItem("suprUserId");
-    console.log(userId);
-
+    // console.log(userId);
+    // console.log(ownerId)
     useEffect(() => {
         onValue(ref(db, `Users/${userId}`), (snapshot) => {
             const data = snapshot.val();
@@ -85,10 +85,15 @@ const ApplicationFormModal = ({ openmodal, setopenmodal, projid }) => {
         // e.target.reset();
 
         //in this database we have projects and the applicants in this project
-        set(ref(db, `ProjectApplicants/${projid}/${userId}`), {
+        set(ref(db, `ProjectApplications/${unqiueId}`), {
             projname: projname,
             contributerName: fromname,
-            contributerEmail: fromEmail,
+            projectId : projid,
+            id : unqiueId,
+            status : 'pending',
+            // contributerEmail: fromEmail,
+            ownerId : ownerId,
+            applicantId : userId,
             timestamp: serverTimestamp(),
         })
         set(ref(db , `Notifications/${unqiueId}`) , {

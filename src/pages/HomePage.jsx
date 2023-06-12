@@ -4,7 +4,6 @@ import Contributions from "../components/Contributions";
 import CardSection from "../components/CardSection";
 import MentorSection from "../components/MentorSection";
 import ResourcesSection from "../components/ResourcesSection";
-import Footer from "../components/Footer";
 import ProjectHelpSection from "../components/ProjectHelpSection";
 
 const HomePage = () => {
@@ -16,7 +15,6 @@ const HomePage = () => {
       <ResourcesSection />
       <ProjectHelpSection/>
       <Contributions />
-      <Footer />
     </div>
   );
 };
