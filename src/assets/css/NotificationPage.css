@@ -1,0 +1,75 @@
+.NotificationContainer{
+      width: 100%;
+      background: #081327;
+      padding: 15px;
+      min-height: 90vh;
+}
+.NotificationHeaderClass{
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+}
+.NotificationHr{
+      margin: 10px 0px;
+      height: 1px;
+}
+
+.NotificationHeader{
+      padding: 10px;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      background: #712ADB;
+      border: 1px solid #000;  
+}
+.NotificationHeaderActive{
+      background: #2FC9D7 !important;
+}
+.NotificationPageHead{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+}
+.NotificationCardCont{
+      width: 50%;
+      position: relative;
+      height: 90px;
+      padding: 15px;
+      display: flex;
+      gap: 10px;
+      justify-content: start;
+      align-items: center;
+      border: 1px solid #000;
+      background: #364f9c
+}
+
+.NotificationCardContf{
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+}
+.IconNotificationCard{
+      width: 70px;
+      border: #000 solid 1px;
+      height: 70px;
+      border-radius: 100%;
+}
+.NotificationEditButton{
+      position: absolute;
+      top: 5px;
+      cursor: pointer;
+      right: 10px;
+}
+
+.NotificationOption{
+      position: absolute;
+      top: 5px;
+      cursor: pointer;
+      background: #fff;
+      right: 10px;
+      width: 120px;
+      padding: 10px;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+}

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import '../assets/css/ResourceDescPageCSS.css'
 import ReactPic from '../assets/images/react_img.png'
+import { GrAdd } from 'react-icons/gr'
+import ResourcePageModal from '../components/ResourcePageModal'
 
 const ResourceDescPage = () => {
   const [selectedItem, setselectedItem] = useState('resourceLecture');
@@ -9,9 +11,16 @@ const ResourceDescPage = () => {
     setselectedItem(resourceItem);
   };
 
+  const [openmodal, setopenmodal] = useState('');
   return (
+    <div>
+      <ResourcePageModal openmodal={openmodal} setopenmodal={setopenmodal}/>
     <div className='ResourcePageDesc_Conatiner'>
+
       <div className="ResDesc">
+      <button onClick={() =>{
+            setopenmodal(!openmodal);
+          }} > <GrAdd/> Add Resources</button>
         <h1>React Resources</h1>
         <img src={ReactPic} alt="" />
 
@@ -51,6 +60,7 @@ const ResourceDescPage = () => {
           <button className='addResourcesButton'>Add Docs</button>
         </div>}
       </div>
+    </div>
     </div>
   )
 }

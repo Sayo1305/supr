@@ -61,6 +61,20 @@ const CreatePostPage = () => {
     }, [userId]);
 
     const handle_submit = () => {
+        const timestamp = serverTimestamp();
+        const date = new Date();
+
+        console.log(date.toLocaleDateString());
+
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+
+        console.log(year);
+
+        const formattedDate = `${year}-${month < 10 ? '0' : ''}${month}-${day < 10 ? '0' : ''}${day}`;
+        console.log(formattedDate);
+
         try {
             const uniqueId = uid(16);
             set(ref(db, `ProjectPosts/${uniqueId}`), {
@@ -75,11 +89,21 @@ const CreatePostPage = () => {
                 username: username,
                 gender: gender,
                 timestamp: serverTimestamp(),
+                createdAt: formattedDate,
             })
             set(ref(db, `myProjects/${userId}/${uniqueId}`), {
                 projid: uniqueId,
                 projname: projname,
                 projdesc: projdesc,
+            })
+            set(ref(db , `Notifications/${uniqueId}`) , {
+                userId : userId ,
+                id : uniqueId ,
+                type : 'Notification',
+                text : `You have Sucessfully created a project wiht name ${projname}.`,
+                status : 'pending',
+                subtype : 'project',
+                date : new Date().getDate(),
             })
             navigate('/projects');
         } catch (error) {
@@ -149,9 +173,9 @@ const CreatePostPage = () => {
                     </div>
                 </div>
                 <div className="probstmtcontainer">
-                    <span id='projsubheading'>Problem statement</span>
+                    <span id='projsubheading'>Describe the issue</span>
                     <div className='postbox'>
-                        <textarea name="message" placeholder="Enter the problem statement..." onChange={(e) => { setprojproblem(e.target.value) }}></textarea>
+                        <textarea name="message" placeholder="Provide a brief explanation or description of the specific problem or part of your project you need assistance with..." onChange={(e) => { setprojproblem(e.target.value) }}></textarea>
                     </div>
                 </div>
                 <div className="githubLinkContainer postlink">
