@@ -74,6 +74,9 @@ const Navbar = () => {
       ) : (
         <div className="navbar">
           <div className="navleft">
+          <div  onClick={() => {
+                navigate("/");
+              }} className="skillVerse">SkillVerse</div>
             <img
               onClick={() => {
                 navigate("/");
@@ -98,9 +101,16 @@ const Navbar = () => {
                   Resources
                 </li>
                 <li>Contribution</li>
-                <Link to={"/projects"}>
+                {/* <Link to={"/projects"}>
                   <li>Projects</li>
-                </Link>
+                </Link> */}
+                <li
+                  onClick={() => {
+                    navigate("/projects");
+                  }}
+                >
+                  Projects
+                </li>
               </div>
             </ul>
           </div>
