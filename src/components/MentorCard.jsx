@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import {getDownloadURL, getStorage, list, listAll, ref} from "firebase/storage";
 import BG from "../assets/images/man.png";
-import { app } from "../firebase";
+import { app, db } from "../firebase";
+import { set , ref as refdb } from "firebase/database";
+import { useNavigate } from "react-router-dom";
 const MentorCard = ({data}) => {
+  const navigate = useNavigate();
   const storage = getStorage(app);
   const [ListingImages , setListingImages] = useState([]);
-  console.log(data)
+  const  userId = localStorage.getItem('suprUserId');
+  // console.log(data)
   const fetch_images = async()=>{
     // await listAll(ref(storage , `images/Mentors/${data.id}`) , async(snapshot)=>{
     //   // console.log(snapshot)
@@ -31,6 +35,18 @@ const MentorCard = ({data}) => {
       .catch((error) => {
         console.log(error);
       });
+  }
+  const handle_Chat = async()=>{
+    // console.log(data)
+    if(data?.id && userId)
+    {
+      await set(refdb(db , `Chats/${data?.id  + "-"+userId}`), {
+        senderId : userId ,
+        recieverId : data?.id,
+        messages : [],
+      });
+      navigate('/chat');
+    }
   }
   useEffect(()=>{
     fetch_images();
@@ -79,7 +95,7 @@ const MentorCard = ({data}) => {
         </a>
       </div>
       <div className="MentorComm">
-        <div className="MentorChat">Chat</div>
+        <div className="MentorChat" onClick={()=>{handle_Chat()}}>Chat</div>
         <div className="MentorCall">Schedule Call</div>
       </div>
     </div>
