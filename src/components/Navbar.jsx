@@ -42,6 +42,7 @@ const Navbar = () => {
     const dataq = query(ref(db , "Notifications") , orderByChild("userId") , equalTo(userId));
     get(dataq).then((snapshot)=>{
       const data = snapshot.val();
+      if(data){
       const datakey = Object.keys(data);
       for(let i = 0; i < datakey.length;i++)
       {
@@ -49,6 +50,7 @@ const Navbar = () => {
       }
       // console.log(arr)
       setnoticedata(arr);
+    }
       // console.log("hello" , snapshot.val())
     })
   },[userId]);
