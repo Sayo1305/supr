@@ -42,6 +42,12 @@ const Navbar = () => {
     const dataq = query(ref(db, "Notifications"), orderByChild("userId"), equalTo(userId));
     get(dataq).then((snapshot) => {
       const data = snapshot.val();
+      if(data){
+      const datakey = Object.keys(data);
+      for(let i = 0; i < datakey.length;i++)
+      {
+        arr.push(data[datakey[i]]);
+      }
       if (data) {
         const datakey = Object.keys(data);
         for (let i = 0; i < datakey.length; i++) {
@@ -50,6 +56,8 @@ const Navbar = () => {
         setnoticedata(arr);
       }
       // console.log(arr)
+      setnoticedata(arr);
+    }
       // console.log("hello" , snapshot.val())
     })
   }, [userId]);
@@ -201,6 +209,9 @@ const Navbar = () => {
                         noticedata.map((value, idx) => (
                           <div key={idx}>{value?.text}</div>
                         ))
+                      }
+                      {
+                        noticedata.length === 0 && <div className="NotificationDiv">No notification right now!!!</div>
                       }
                     </div>
                     <div className="NotificationShow">
