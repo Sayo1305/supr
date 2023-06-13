@@ -10,7 +10,7 @@
 }
 
 .imgContainer{
-    background-color: #090e16;
+    background-color: #1f2838;
     margin-left: 20px;
     border-radius: 10px;
     text-align: center;
@@ -218,14 +218,14 @@
 }
 
 .about{
-    background-color: #090e16;
+    background-color: #1f2838;
     padding: 50px;
     border-radius: 10px;
     margin-bottom: 10px;
 }
 
 .techstack{
-    background-color: #090e16;
+    background-color: #1f2838;
     padding: 50px;
     border-radius: 10px;
 }
@@ -238,7 +238,7 @@
 }
 
 .myapplications{
-    background-color: #090e16;
+    background-color: #1f2838;
     padding: 50px;
     border-radius: 10px;
     margin-top: 10px;
