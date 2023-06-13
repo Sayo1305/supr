@@ -6,6 +6,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+## Attribution
+<a href="https://www.freepik.com/free-vector/messenger-concept-illustration_6199003.htm#query=chat&position=7&from_view=search&track=sph">Image by storyset</a> on Freepik
 ### `npm start`
 
 Runs the app in the development mode.\

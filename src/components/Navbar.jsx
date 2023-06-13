@@ -128,10 +128,11 @@ const Navbar = () => {
                 >
                   Resources
                 </li>
-                <li>Contribution</li>
+                <li onClick={()=>{navigate("/chat");setopennotice(false);}}>Chats</li>
                 <li
                   onClick={() => {
                     navigate("/projects");
+                    setopennotice(false);
                   }}
                 >
                   Projects
